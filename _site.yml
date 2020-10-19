@@ -6,9 +6,9 @@ output_dir: "docs"
 navbar:
   logo:
     image: images/logo.png
-    href: https://www.rstudio.com
+    href: https://www.viroplant.eu/
   right:
-    - text: "Figure"
+    - text: "Figures"
       href: figures.html
     - text: "Tables"
       href: tables.html
