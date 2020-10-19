@@ -1,0 +1,8 @@
+---
+title: "Citations"
+bibliography: bib.bibtex
+output: distill::distill_article
+---
+
+# References
+

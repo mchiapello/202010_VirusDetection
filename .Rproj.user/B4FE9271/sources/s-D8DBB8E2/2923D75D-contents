@@ -1,0 +1,11 @@
+---
+title: "Citations"
+output: html_document
+bibliography: bib.bibtex
+---
+
+ ciao @pippo
+
+# References
+
+

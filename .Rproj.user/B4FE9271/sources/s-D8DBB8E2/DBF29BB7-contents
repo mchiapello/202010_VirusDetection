@@ -20,8 +20,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 | Hour | Goal |
 |---|---|
-|9:00 - 9:15 | [General introduction and presentations]("Intro.html")|
-|9:15 - 9:30 | Course goal and expectations
+|9:00 - 9:15 | [General introduction and presentations](Intro.html)|
+|9:15 - 9:30 | Course goal and expectations @BIGEARD2015521
 |9:30 - 9:45 | Expexted output
 |9:45 - 11:00| Pipeline bird's eye view
 |11:00 - 11:15| Break
