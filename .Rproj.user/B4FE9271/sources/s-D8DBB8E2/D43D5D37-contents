@@ -7,6 +7,7 @@ navbar:
   logo:
     image: images/logo.png
     href: https://www.viroplant.eu/
+  search: true
   right:
     - text: "Figures"
       href: figures.html
@@ -24,5 +25,5 @@ navbar:
         - text: "Article Metadata"
           href: metadata.html
     - icon: fab fa-github
-      href: https://github.com/rstudio/distill
+      href: https://github.com/mchiapello/202010_VirusDetection
 output: distill::distill_article
