@@ -6,7 +6,6 @@ output_dir: "docs"
 navbar:
   logo:
     image: images/logo.png
-    href: https://www.rstudio.com
   right:
     - text: "Figure"
       href: figures.html
