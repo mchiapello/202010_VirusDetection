@@ -3,7 +3,7 @@
     "path": "~/Documents/Courses/202010_VirusDetection/docs/Pres/Pres0.Rmd",
     "project_path": "docs/Pres/Pres0.Rmd",
     "type": "r_markdown",
-    "hash": "4129183095",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1603139141647.0,
@@ -17,11 +17,11 @@
         "scrollLine": "46"
     },
     "folds": "",
-    "lastKnownWriteTime": 1603167787,
+    "lastKnownWriteTime": 1603168730,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1603167787895,
+    "last_content_update": 1603168730,
     "read_only": false,
     "read_only_alternatives": []
 }
