@@ -1,8 +1,11 @@
 ---
 title: "Citations"
 bibliography: bib.bibtex
+nocite: |
+  @BIGEARD2015521
 output: distill::distill_article
 ---
 
-# References
+@BIGEARD2015521
+
 
