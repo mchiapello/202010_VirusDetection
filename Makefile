@@ -1,5 +1,9 @@
-all : L1 L2 L3
+all : pres site
 
-L1 : index.Rmd
+site : index.Rmd
 		Rscript -e "library(rmarkdown); render_site()"
+		cp -r Pres docs
+
+pres : Makefile
+	    cd Pres && make all
 
