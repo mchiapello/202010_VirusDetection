@@ -1,7 +1,0 @@
-BiocManager::install("sangerseqR")
-
-library(sangerseqR)
-
-hetab1 <- read.abif("~/Downloads/Carra01_DUFpMF1start2_C03.ab1")
-
-primarySeq(sangerseq(hetab1))

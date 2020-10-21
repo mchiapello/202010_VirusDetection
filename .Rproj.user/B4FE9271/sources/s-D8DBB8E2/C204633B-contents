@@ -1,9 +1,0 @@
----
-title: "Contacts"
-output: distill::distill_article
----
-
-| Person | email | skype |
-|--- |--- |--- |
-|Marco Chiapello | marco.chiapello (at) ipsp.cnr.it | marpello1980
-|Massimo Turina | massimo.turina (at) ipsp.cnr.it | turinalab
