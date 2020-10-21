@@ -57,6 +57,31 @@
     margin: 0px;
 }
 
+.m0 p, .m0 ul, .m0 ol {
+    margin: 0px;
+}
+
+.m3t p, .m3t ul, .m3t ol {
+    margin-top: 3px;
+}
+.m0t p, .m0t ul, .m0t ol {
+    margin-top: 0px;
+}
+
+.m0b p, .m0b ul, .m0b ol {
+    margin-bottom: 0px;
+}
+
+.par15 p, .par15 ul li, .par15 ol li {
+    line-height: 20px;
+    font-size: 15px;
+}
+
+.par20 p, .par20 ul li, .par20 ol li {
+    line-height: 25px;
+    font-size: 20px;
+}
+
 .par23 p, .par23 ul li, .par23 ol li {
     line-height: 27px;
     font-size: 23px;
@@ -121,6 +146,7 @@
   line-height: 20px;
   font-size: 18px;
 }
+
 
 /**************
  # CONTENT 

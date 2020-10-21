@@ -131,3 +131,12 @@ layout: true
 1. List of tools we use to carry out the analysis `r fontawesome::fa("chart-bar", fill = "black")` 
 ]
 
+---
+
+layout: false
+class: clear, middle, center
+
+```{r questions-tidyr, echo=FALSE, out.height="450", out.width="450"}
+knitr::include_graphics("images/questions.png")
+```
+
