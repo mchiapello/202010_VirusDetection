@@ -55,7 +55,7 @@ class: title-slide
 
 <br>
 .font200[.f700[Bioinformatics analysis of viromes]]<br>
-.font120[Turina's Lab pipeline for virome identification]
+.font120[Course goal and expectations]
 
 <br>
 <br>
@@ -72,11 +72,62 @@ layout: true
 
 ---
 
-```{r echo=FALSE, out.width="800px"}
+```{r echo=FALSE, out.width="600px"}
 knitr::include_graphics("images/003.png")
 ```
 .right[.font50[`r Cite(bib, key = "chiap2020")`]]
 
+---
 
+```{r echo=FALSE, out.width="800px"}
+knitr::include_graphics("images/004.png")
+```
+.right[.font50[`r Cite(bib, key = "chiap2020")`]]
 
 ---
+
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("images/005.jpeg")
+```
+.right[.font50[`r Cite(bib, key = "chiap2020")`]]
+
+---
+
+```{r echo=FALSE, out.width="650px"}
+knitr::include_graphics("images/006.jpg")
+```
+.right[.font50[`r Cite(bib, key = "chiap2020")`]]
+
+---
+
+.pull-left[
+
+```{r echo=FALSE, out.width="300px"}
+knitr::include_graphics("images/007.png")
+```
+]
+
+.pull-right[
+
+```{r echo=FALSE, out.width="350px"}
+knitr::include_graphics("images/008.png")
+```
+]
+
+.right[.font50[`r Cite(bib, key = "chiap2020")`]]
+
+---
+layout: true
+# Course outcome
+
+---
+
+<br><br>
+.content-box-red[
+1. General understanding of contig viral identification `r anicon::cia("images/virus-3128.png", animate="pulse", speed="slow", anitype="hover")`
+
+1. Overview of our pipeline `r fontawesome::fa("network-wired", fill = "black")` 
+
+1. List of tools we use to carry out the analysis `r fontawesome::fa("chart-bar", fill = "black")` 
+]
+
