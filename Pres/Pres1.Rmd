@@ -83,10 +83,65 @@ class: clear
   - Mapping
 
 - Orfans
+
+- General recommandations
+  - Software version
+  - Avoid manual operation
+  - Master script
+  - Backup
+  - Version control
 ]
 
 
 
+
+---
+
+# Sequencing by synthesis
+
+.center[
+.middle[
+<iframe width="840" height="473" src="https://www.youtube.com/embed/fCd6B5HRaZ8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+]
+
+---
+
+# Kmers
+
+.pull-left[
+.par25[
+
+- In bioinformatics, k-mers are subsequences of length k contained within a biological sequence
+
+- Primarily used within the context of computational genomics and sequence analysis
+
+- In sequence assembly, k-mers are used during the construction of De Bruijn graphs
+]
+]
+
+    
+.pull-right[
+```{r echo=FALSE, out.width="300px"}
+knitr::include_graphics("images/kmer2.svg")
+```
+]
+
+---
+
+# Kmers
+
+```{r echo=FALSE, out.width="900px"}
+knitr::include_graphics("images/kmer1.png")
+```
+
+---
+
+# De Bruijn graphs
+
+```{r echo=FALSE, out.width="550px"}
+knitr::include_graphics("images/kmer3.png")
+```
 
 ---
 
@@ -99,14 +154,14 @@ class: inverse, middle, center
 
 ----
 
+
 ---
 
-.center[
-.middle[
-<iframe width="840" height="473" src="https://www.youtube.com/embed/fCd6B5HRaZ8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-]
-]
+class: middle, center, clear
 
+# .black[Quality check]
+
+----
 
 ---
 
@@ -116,7 +171,7 @@ layout: true
 
 ---
 
-.f50[md5sum]
+.f50[On raw data]
 
 .pull-left[
 .par30[
@@ -428,6 +483,34 @@ knitr::include_graphics("images/Fqc7.png")
 
 ---
 
+.pull-left[
+**Per Sequence Quality Scores**
+
+.m0.par20[
+The per sequence quality score report allows you to see if a subset of your sequences have universally low quality values
+]
+
+.m0tp[
+.par20[
+
+- If a significant proportion of the sequences in a run have overall low quality then this could indicate some kind of systematic problem - possibly with just part of the run (for example one end of a flowcell)
+
+- This module is generally fairly robust and errors here usually indicate a general loss of quality within a run
+
+- For long runs this may be alleviated through quality trimming
+]
+]
+]
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="600px"}
+knitr::include_graphics("images/Fqc8.png")
+```
+]
+
+---
 
 .pull-left[
 **Per Base Sequence Content**
@@ -458,4 +541,194 @@ knitr::include_graphics("images/Fqc5.png")
 
 ---
 
+.pull-left[
+**Per Sequence GC Content**
+
+.m0.par20[
+This module measures the GC content across the whole length of each sequence in a file and compares it to a modelled normal distribution of GC content
+]
+
+.m0tp[
+.par20[
+
+- In a normal random library you would expect to see a roughly normal distribution of GC content where the central peak corresponds to the overall GC content of the underlying genome
+
+- An unusually shaped distribution could indicate a contaminated library or some other kinds of biased subset
+
+- Sharp peaks on an otherwise smooth distribution are normally the result of a specific contaminant (adapter dimers for example), which may well be picked up by the overrepresented sequences module
+]
+]
+]
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="600px"}
+knitr::include_graphics("images/Fqc9.png")
+```
+]
+
+---
+
+
+.pull-left[
+**Per Base N Content**
+
+.m0.par20[
+If a sequencer is unable to make a base call with sufficient confidence then it will normally substitute an N rather than a conventional base call
+]
+
+.m0tp[
+.par20[
+
+- It's not unusual to see a very low proportion of Ns appearing in a sequence
+
+- If this proportion rises above a few percent it suggests that the analysis pipeline was unable to interpret the data well enough to make valid base calls
+]
+]
+]
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="600px"}
+knitr::include_graphics("images/Fqc10.png")
+```
+]
+
+---
+
+
+.pull-left[
+**Sequence Length Distribution**
+
+.m0.par20[
+Some high throughput sequencers generate sequence fragments of uniform length, but others can contain reads of wildly varying lengths
+]
+
+.m0tp[
+.par20[
+
+- In many cases this will produce a simple graph showing a peak only at one size
+
+- For variable length FastQ files this will show the relative amounts of each different size of sequence fragment
+]
+]
+]
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="600px"}
+knitr::include_graphics("images/Fqc11.png")
+```
+]
+
+---
+
+
+.pull-left[
+**Duplicate Sequences**
+
+.m0.par20[
+In a diverse library most sequences will occur only once in the final set. A low level of duplication may indicate a very high level of coverage of the target sequence, but a high level of duplication is more likely to indicate some kind of enrichment bias (eg PCR over amplification)
+]
+
+.m0tp[
+.par20[
+
+- Only sequences which first appear in the first 100,000 sequences in each file are analysed
+
+- Each sequence is tracked to the end of the file to give a representative count of the overall duplication level
+
+-  There are two lines on the plot.
+  - The blue line takes the full sequence set and shows how its duplication levels are distributed.
+  - In the red plot the sequences are de-duplicated
+]
+]
+]
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="600px"}
+knitr::include_graphics("images/Fqc12.png")
+```
+]
+
+---
+
+.pull-left[
+**Duplicate Sequences**
+
+.m0.par20[
+Let's take two examples where each contain 20 reads:
+
+- Case 1: 10 unique reads +  5 reads each present twice (duplicates)
+- Case 2: 10 unique reads + 1 read present 10 times 
+
+]
+
+.m0tp[
+.par15[
+
+- **Case 1** shown in the upper plot will lead to 15 distinct reads and thus 15/20=75% percent remaining, the number of singletons is 1x10 =10 and the number of doubles is 5x2 =10 therefore the blue line has a plateau at those rates. The 15 distinct sequences are distributed as  10 singletons and 5 duplicates, 10/15=66% and 5/15=33% is the slope of the red line.
+
+- **Case 2** will produce 11 distinct reads and therefore 11/20=55% will be the precent remaining reads. Again the total number of reads is equally distributed between the two cases but this time the peak will be at 10 since we have one read duplicated 10 times and that produces 10 sequences. But there are 11 total groups where 10/11=91% are singletons and 1/11=9% of the groups form at duplication rate of 10x.
+]
+]
+]
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="600px"}
+knitr::include_graphics("images/Fqc14.png")
+```
+]
+
+---
+
+.pull-left[
+**Overrepresented Sequences**
+
+.m0.par20[
+A normal high-throughput library will contain a diverse set of sequences, with no individual sequence making up a tiny fraction of the whole
+<br><br>
+- Finding that a single sequence is very overrepresented in the set either means that it is highly biologically significant, or indicates that the library is contaminated
+
+- This module lists all of the sequence which make up more than 0.1% of the total
+
+- Only sequences which appear in the first 100,000 sequences are tracked to the end of the file
+]
+]
+
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("images/Fqc15.png")
+```
+]
+
+---
+
+.pull-left[
+**Adapter Content**
+
+.m0.par20[
+The Kmer Content module will do a generic analysis of all of the Kmers in your library to find those which do not have even coverage through the length of your reads. This can find a number of different sources of bias in the library which can include the presence of read-through adapter sequences building up on the end of your sequences
+]
+]
+
+    
+.pull-right[
+<br>
+```{r echo=FALSE, out.width="600px"}
+knitr::include_graphics("images/Fqc13.png")
+```
+]
+
+---
 
