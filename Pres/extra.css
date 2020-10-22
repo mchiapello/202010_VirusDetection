@@ -176,6 +176,11 @@
  # IMAGE 
 ***************/
 
+.rightH1 {
+    display: inline;
+    float: right;
+}
+
 .lp p {
     float: left;
     margin: 0px 50px !important;

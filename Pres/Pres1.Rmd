@@ -74,7 +74,7 @@ class: clear
 
 - Pipeline
   - Quality check
-  - Cleaning
+  - Data cleaning
   - Assembly
   - Blast against viralDB
   - Manual selection I
@@ -90,6 +90,7 @@ class: clear
   - Master script
   - Backup
   - Version control
+  - Working directory  
 ]
 
 
@@ -145,15 +146,22 @@ knitr::include_graphics("images/kmer3.png")
 
 ---
 
-layout: true
-# Pipeline
-
----
-
+layout: false
 class: inverse, middle, center
+
+# Pipeline
 
 ----
 
+---
+
+class: clear, middle, center
+
+.f50[.red[DISCLAIM]]
+
+.black[This is a **Command Line Interface** lesson]
+
+.font200[`r fontawesome::fa("terminal", fill = "black")`] 
 
 ---
 
@@ -299,6 +307,11 @@ layout: true
 - **FastQC aims to provide a QC report which can spot problems** which originate either in the sequencer or in the starting library material.
 
 - FastQC can be run in one of two modes. It can either **run as a stand alone interactive application** for the immediate analysis of small numbers of FastQ files, or it can be run in a non-interactive mode where it would be suitable for **integrating into a larger analysis pipeline** for the systematic processing of large numbers of files. 
+
+```
+> fastqc CP1/Cp1_1.fastq.gz CP1/Cp1_2.fastq.gz CP2/Cp2_1.fastq.gz CP2/Cp2_2.fastq.gz \
+  GNO/Gno_1.fastq.gz GNO/Gno_2.fastq.gz -o quality -t 6
+```
 ]
 
 ---
@@ -323,6 +336,12 @@ layout: true
 knitr::include_graphics("images/Fqc1.png")
 ```
 ]
+
+???
+
+happy families are all alike 
+
+every unhappy family is unhappy in its own way
 
 ---
 
@@ -732,3 +751,237 @@ knitr::include_graphics("images/Fqc13.png")
 
 ---
 
+```{r echo=FALSE, out.width="500px"}
+knitr::include_graphics("images/questions.png")
+```
+
+---
+
+class: middle, center, clear
+
+# .black[Data cleaning] `r fontawesome::fa("broom", fill = "black")`
+
+----
+
+---
+
+class: clear, middle, center
+
+.f70[.f900[BBTools]]
+
+.m0tp[
+.f15[https://jgi.doe.gov/data-and-tools/bbtools/]
+]
+
+----
+
+---
+
+layout: false
+# Sketch .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+ 
+
+.par23[
+- This tool use a technique called MinHash to rapidly compare large sequences.  
+
+- The result is similar to BLAST; a list of hits from a query sequence to various reference sequences, sorted by similarity, but the mechanisms are very different. 
+
+- Sketch is designed to be extremely fast (potentially thousands of times faster than BLAST) while having a very low disk and memory footprint, but gives more approximate results and does not produce alignments.
+]
+<br>
+```{r echo=FALSE, out.width="1100px"}
+knitr::include_graphics("images/ske1.png")
+```
+
+---
+
+# Sketch .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+```{r echo = FALSE}
+library(tidyverse)
+library(DT)
+library(widgetframe)
+x <- read_csv("images/SketchSummary.csv") %>%
+    mutate(#Pool = factor(Pool),
+           rank = factor(rank, levels = c("superkingdom", "kingdom", "subkingdom",
+                                          "phylum", "subphylum",
+                                          "class", "subclass",
+                                          "order", "family", "genus", "species")),
+           name = factor(name)) 
+
+x <- x %>%
+   filter(Pool %in% c("CP1_1", "CP1_2", "CP2_1", "CP2_2", "GNO_1", "GNO_2")) %>%
+   mutate(Pool = factor(Pool))
+
+dt <- x %>%
+    datatable(
+      rownames = FALSE,
+      filter = "top",
+      extensions = 'Buttons',
+      options = list(#dom = 'Bsftlip',
+                     dom = 'tBp',
+                     buttons = c('csv', 'copy'))
+      )
+
+frameWidget(dt)
+```
+
+---
+
+# Clumpify .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+.pull-left[
+.m0tp[
+.par23[
+
+- Clumpify is a tool designed to rapidly **group overlapping reads into clumps** 
+  
+- This can be used as a way to increase file compression, accelerate overlap-based assembly, or accelerate applications such as mapping 
+
+```
+> clumpify.sh in=reads.fq.gz out=clumped.fq.gz
+```
+]
+]
+]
+
+    
+.pull-right[
+```{r echo=FALSE, out.width="500px"}
+knitr::include_graphics("images/clu1.png")
+```
+]
+
+---
+
+# BBDuk .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+.par23[
+- "Duk" stands for Decontamination Using Kmers
+
+- BBDuk was developed to combine most common data-quality-related trimming, filtering, and masking operations into a single high-performance tool
+
+- It is capable of quality-trimming and filtering, adapter-trimming, contaminant-filtering via kmer matching, sequence masking, GC-filtering, length filtering, entropy-filtering, format conversion, histogram generation, subsampling, quality-score recalibration, kmer cardinality estimation, and various other operations in a single pass
+
+- Any combination of operations is possible in a single pass, with the exception of kmer-based operations (kmer trimming, kmer masking, or kmer filtering); at most 1 kmer-based operation can be done in a single pass
+]
+
+---
+
+# BBDuk - Adapter trimming .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+```
+> bbduk.sh in=reads.fq out=clean.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo
+```
+
+.par23[
+
+- "ktrim=r" is for right-trimming (3′ adapters)    
+
+- "k" specifies the kmer size to use (must be at most the length of the adapters)    
+
+- "mink"" allows it to use shorter kmers at the ends of the read    
+
+- "hdist" means “hamming distance”; this allows one mismatch    
+
+- "tbo" which specifies to also trim adapters based on pair overlap detection    
+
+- "tpe" which specifies to trim both reads to the same length    
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+## Artefacts removal
+
+```
+> bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=phix.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+<br>
+.par23[
+This will remove all reads that have a 31-mer match to phix sequences (common illumina spiked in sequences), allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+.content-box-red[
+This allows you to split a set of reads based on the presence of something
+]
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+## Short removal
+
+```
+> bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=short.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+<br>
+.par23[
+This will remove all reads that have a 31-mer match to short sequences, allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+## Ribosomal removal
+
+```
+> bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=ribosomal.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+<br>
+.par23[
+This will remove all reads that have a 31-mer match to ribosomal sequences, allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+`r fontawesome::fa("broom", fill = "white")`
+]
+
+## Gemone removal
+
+```
+> bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=genome.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+<br>
+.par23[
+This will remove all reads that have a 31-mer match to genome sequences, allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+]

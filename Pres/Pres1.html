@@ -13,6 +13,9 @@
     <script src="libs/shareon/shareon.min.js"></script>
     <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/pymjs/pym.v1.js"></script>
+    <script src="libs/widgetframe-binding/widgetframe.js"></script>
     <link rel="stylesheet" href="scrollable.css" type="text/css" />
     <link rel="stylesheet" href="mtheme_max.css" type="text/css" />
     <link rel="stylesheet" href="fonts_mtheme_max.css" type="text/css" />
@@ -48,7 +51,7 @@ class: clear
 
 - Pipeline
   - Quality check
-  - Cleaning
+  - Data cleaning
   - Assembly
   - Blast against viralDB
   - Manual selection I
@@ -64,6 +67,7 @@ class: clear
   - Master script
   - Backup
   - Version control
+  - Working directory  
 ]
 
 
@@ -113,15 +117,22 @@ class: clear
 
 ---
 
-layout: true
-# Pipeline
-
----
-
+layout: false
 class: inverse, middle, center
+
+# Pipeline
 
 ----
 
+---
+
+class: clear, middle, center
+
+.f50[.red[DISCLAIM]]
+
+.black[This is a **Command Line Interface** lesson]
+
+.font200[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M257.981 272.971L63.638 467.314c-9.373 9.373-24.569 9.373-33.941 0L7.029 444.647c-9.357-9.357-9.375-24.522-.04-33.901L161.011 256 6.99 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L257.981 239.03c9.373 9.372 9.373 24.568 0 33.941zM640 456v-32c0-13.255-10.745-24-24-24H312c-13.255 0-24 10.745-24 24v32c0 13.255 10.745 24 24 24h304c13.255 0 24-10.745 24-24z"/&gt;&lt;/svg&gt;] 
 
 ---
 
@@ -263,6 +274,11 @@ layout: true
 - **FastQC aims to provide a QC report which can spot problems** which originate either in the sequencer or in the starting library material.
 
 - FastQC can be run in one of two modes. It can either **run as a stand alone interactive application** for the immediate analysis of small numbers of FastQ files, or it can be run in a non-interactive mode where it would be suitable for **integrating into a larger analysis pipeline** for the systematic processing of large numbers of files. 
+
+```
+&gt; fastqc CP1/Cp1_1.fastq.gz CP1/Cp1_2.fastq.gz CP2/Cp2_1.fastq.gz CP2/Cp2_2.fastq.gz \
+  GNO/Gno_1.fastq.gz GNO/Gno_2.fastq.gz -o quality -t 6
+```
 ]
 
 ---
@@ -285,6 +301,12 @@ layout: true
 &lt;br&gt;
 &lt;img src="images/Fqc1.png" width="550px" style="display: block; margin: auto;" /&gt;
 ]
+
+???
+
+happy families are all alike 
+
+every unhappy family is unhappy in its own way
 
 ---
 
@@ -666,6 +688,208 @@ The Kmer Content module will do a generic analysis of all of the Kmers in your l
 
 ---
 
+&lt;img src="images/questions.png" width="500px" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center, clear
+
+# .black[Data cleaning] &lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+
+----
+
+---
+
+class: clear, middle, center
+
+.f70[.f900[BBTools]]
+
+.m0tp[
+.f15[https://jgi.doe.gov/data-and-tools/bbtools/]
+]
+
+----
+
+---
+
+layout: false
+# Sketch .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+ 
+
+.par23[
+- This tool use a technique called MinHash to rapidly compare large sequences.  
+
+- The result is similar to BLAST; a list of hits from a query sequence to various reference sequences, sorted by similarity, but the mechanisms are very different. 
+
+- Sketch is designed to be extremely fast (potentially thousands of times faster than BLAST) while having a very low disk and memory footprint, but gives more approximate results and does not produce alignments.
+]
+&lt;br&gt;
+&lt;img src="images/ske1.png" width="1100px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Sketch .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+<div id="htmlwidget-1e03bd97d06fca2d2577" style="width:100%;height:504px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1e03bd97d06fca2d2577">{"x":{"url":"Pres1_files/figure-html//widgets/widget_unnamed-chunk-23.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Clumpify .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+.pull-left[
+.m0tp[
+.par23[
+
+- Clumpify is a tool designed to rapidly **group overlapping reads into clumps** 
+  
+- This can be used as a way to increase file compression, accelerate overlap-based assembly, or accelerate applications such as mapping 
+
+```
+&gt; clumpify.sh in=reads.fq.gz out=clumped.fq.gz
+```
+]
+]
+]
+
+    
+.pull-right[
+&lt;img src="images/clu1.png" width="500px" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# BBDuk .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+.par23[
+- "Duk" stands for Decontamination Using Kmers
+
+- BBDuk was developed to combine most common data-quality-related trimming, filtering, and masking operations into a single high-performance tool
+
+- It is capable of quality-trimming and filtering, adapter-trimming, contaminant-filtering via kmer matching, sequence masking, GC-filtering, length filtering, entropy-filtering, format conversion, histogram generation, subsampling, quality-score recalibration, kmer cardinality estimation, and various other operations in a single pass
+
+- Any combination of operations is possible in a single pass, with the exception of kmer-based operations (kmer trimming, kmer masking, or kmer filtering); at most 1 kmer-based operation can be done in a single pass
+]
+
+---
+
+# BBDuk - Adapter trimming .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+```
+&gt; bbduk.sh in=reads.fq out=clean.fq ref=adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo
+```
+
+.par23[
+
+- "ktrim=r" is for right-trimming (3′ adapters)    
+
+- "k" specifies the kmer size to use (must be at most the length of the adapters)    
+
+- "mink"" allows it to use shorter kmers at the ends of the read    
+
+- "hdist" means “hamming distance”; this allows one mismatch    
+
+- "tbo" which specifies to also trim adapters based on pair overlap detection    
+
+- "tpe" which specifies to trim both reads to the same length    
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+## Artefacts removal
+
+```
+&gt; bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=phix.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+&lt;br&gt;
+.par23[
+This will remove all reads that have a 31-mer match to phix sequences (common illumina spiked in sequences), allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+.content-box-red[
+This allows you to split a set of reads based on the presence of something
+]
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+## Short removal
+
+```
+&gt; bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=short.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+&lt;br&gt;
+.par23[
+This will remove all reads that have a 31-mer match to short sequences, allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+## Ribosomal removal
+
+```
+&gt; bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=ribosomal.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+&lt;br&gt;
+.par23[
+This will remove all reads that have a 31-mer match to ribosomal sequences, allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+]
+
+---
+
+# BBDuk - Kmer filtering .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+## Gemone removal
+
+```
+&gt; bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=genome.fa.gz k=31 hdist=1 stats=stats.txt
+``` 
+&lt;br&gt;
+.par23[
+This will remove all reads that have a 31-mer match to genome sequences, allowing one mismatch
+
+"stats" will produce a report of which contaminant sequences were seen
+
+The “outm” stream will catch reads that matched a reference kmers
+
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
