@@ -1,0 +1,608 @@
+Pool,rank,name,n
+CP1_1,superkingdom,Eukaryota,4
+CP1_1,superkingdom,Viruses,1
+CP1_1,kingdom,Fungi,4
+CP1_1,kingdom,Orthornavirae,1
+CP1_1,subkingdom,Dikarya,4
+CP1_1,phylum,Ascomycota,4
+CP1_1,phylum,Pisuviricota,1
+CP1_1,subphylum,Pezizomycotina,4
+CP1_1,class,Sordariomycetes,4
+CP1_1,class,Duplopiviricetes,1
+CP1_1,subclass,Sordariomycetidae,4
+CP1_1,order,Diaporthales,4
+CP1_1,order,Durnavirales,1
+CP1_1,family,Cryphonectriaceae,4
+CP1_1,family,Hypoviridae,1
+CP1_1,genus,Chrysoporthe,3
+CP1_1,genus,Cryphonectria,1
+CP1_1,genus,Hypovirus,1
+CP1_1,species,Chrysoporthe austroafricana,1
+CP1_1,species,Chrysoporthe cubensis,1
+CP1_1,species,Chrysoporthe deuterocubensis,1
+CP1_1,species,Cryphonectria hypovirus 1,1
+CP1_1,species,Cryphonectria parasitica,1
+CP1_2,superkingdom,Eukaryota,13
+CP1_2,superkingdom,Viruses,1
+CP1_2,kingdom,Fungi,13
+CP1_2,kingdom,Orthornavirae,1
+CP1_2,subkingdom,Dikarya,13
+CP1_2,phylum,Ascomycota,13
+CP1_2,phylum,Pisuviricota,1
+CP1_2,subphylum,Pezizomycotina,13
+CP1_2,class,Sordariomycetes,13
+CP1_2,class,Duplopiviricetes,1
+CP1_2,subclass,Sordariomycetidae,10
+CP1_2,subclass,Hypocreomycetidae,3
+CP1_2,order,Diaporthales,5
+CP1_2,order,Sordariales,4
+CP1_2,order,Hypocreales,2
+CP1_2,order,Durnavirales,1
+CP1_2,order,Glomerellales,1
+CP1_2,order,Ophiostomatales,1
+CP1_2,family,Cryphonectriaceae,4
+CP1_2,family,Chaetomiaceae,2
+CP1_2,family,Hypocreaceae,2
+CP1_2,family,Sordariaceae,2
+CP1_2,family,Diaporthaceae,1
+CP1_2,family,Glomerellaceae,1
+CP1_2,family,Hypoviridae,1
+CP1_2,family,Ophiostomataceae,1
+CP1_2,genus,Chrysoporthe,3
+CP1_2,genus,Podospora,2
+CP1_2,genus,Trichoderma,2
+CP1_2,genus,Colletotrichum,1
+CP1_2,genus,Cryphonectria,1
+CP1_2,genus,Diaporthe,1
+CP1_2,genus,Grosmannia,1
+CP1_2,genus,Hypovirus,1
+CP1_2,genus,Neurospora,1
+CP1_2,genus,Sordaria,1
+CP1_2,species,Chrysoporthe austroafricana,1
+CP1_2,species,Chrysoporthe cubensis,1
+CP1_2,species,Chrysoporthe deuterocubensis,1
+CP1_2,species,Colletotrichum orchidophilum,1
+CP1_2,species,Cryphonectria hypovirus 1,1
+CP1_2,species,Cryphonectria parasitica,1
+CP1_2,species,Diaporthe longicolla,1
+CP1_2,species,Grosmannia clavigera,1
+CP1_2,species,Neurospora tetrasperma,1
+CP1_2,species,Podospora anserina,1
+CP1_2,species,Podospora comata,1
+CP1_2,species,Sordaria macrospora,1
+CP1_2,species,Trichoderma harzianum,1
+CP1_2,species,Trichoderma virens,1
+CP2_1,superkingdom,Eukaryota,4
+CP2_1,superkingdom,Viruses,1
+CP2_1,kingdom,Fungi,4
+CP2_1,kingdom,Orthornavirae,1
+CP2_1,subkingdom,Dikarya,4
+CP2_1,phylum,Ascomycota,4
+CP2_1,phylum,Pisuviricota,1
+CP2_1,subphylum,Pezizomycotina,4
+CP2_1,class,Sordariomycetes,4
+CP2_1,class,Duplopiviricetes,1
+CP2_1,subclass,Sordariomycetidae,4
+CP2_1,order,Diaporthales,4
+CP2_1,order,Durnavirales,1
+CP2_1,family,Cryphonectriaceae,4
+CP2_1,family,Hypoviridae,1
+CP2_1,genus,Chrysoporthe,3
+CP2_1,genus,Cryphonectria,1
+CP2_1,genus,Hypovirus,1
+CP2_1,species,Chrysoporthe austroafricana,1
+CP2_1,species,Chrysoporthe cubensis,1
+CP2_1,species,Chrysoporthe deuterocubensis,1
+CP2_1,species,Cryphonectria hypovirus 1,1
+CP2_1,species,Cryphonectria parasitica,1
+CP2_2,superkingdom,Eukaryota,8
+CP2_2,superkingdom,Viruses,1
+CP2_2,kingdom,Fungi,8
+CP2_2,kingdom,Orthornavirae,1
+CP2_2,subkingdom,Dikarya,8
+CP2_2,phylum,Ascomycota,8
+CP2_2,phylum,Pisuviricota,1
+CP2_2,subphylum,Pezizomycotina,8
+CP2_2,class,Sordariomycetes,8
+CP2_2,class,Duplopiviricetes,1
+CP2_2,subclass,Sordariomycetidae,6
+CP2_2,subclass,Hypocreomycetidae,1
+CP2_2,subclass,Xylariomycetidae,1
+CP2_2,order,Diaporthales,5
+CP2_2,order,Durnavirales,1
+CP2_2,order,Hypocreales,1
+CP2_2,order,Togniniales,1
+CP2_2,order,Xylariales,1
+CP2_2,family,Cryphonectriaceae,4
+CP2_2,family,Diaporthaceae,1
+CP2_2,family,Hypocreaceae,1
+CP2_2,family,Hypoviridae,1
+CP2_2,family,Togniniaceae,1
+CP2_2,genus,Chrysoporthe,3
+CP2_2,genus,Cryphonectria,1
+CP2_2,genus,Diaporthe,1
+CP2_2,genus,Hypovirus,1
+CP2_2,genus,Phaeoacremonium,1
+CP2_2,genus,Phialemoniopsis,1
+CP2_2,genus,Trichoderma,1
+CP2_2,species,Chrysoporthe austroafricana,1
+CP2_2,species,Chrysoporthe cubensis,1
+CP2_2,species,Chrysoporthe deuterocubensis,1
+CP2_2,species,Cryphonectria hypovirus 1,1
+CP2_2,species,Cryphonectria parasitica,1
+CP2_2,species,Diaporthe longicolla,1
+CP2_2,species,Phaeoacremonium minimum,1
+CP2_2,species,Phialemoniopsis curvata,1
+CP2_2,species,Trichoderma citrinoviride,1
+Cp1_1,superkingdom,Eukaryota,19
+Cp1_1,superkingdom,Viruses,1
+Cp1_1,kingdom,Fungi,19
+Cp1_1,kingdom,Orthornavirae,1
+Cp1_1,subkingdom,Dikarya,19
+Cp1_1,phylum,Ascomycota,19
+Cp1_1,phylum,Pisuviricota,1
+Cp1_1,subphylum,Pezizomycotina,19
+Cp1_1,class,Sordariomycetes,19
+Cp1_1,class,Duplopiviricetes,1
+Cp1_1,subclass,Sordariomycetidae,9
+Cp1_1,subclass,Hypocreomycetidae,8
+Cp1_1,subclass,Xylariomycetidae,2
+Cp1_1,order,Diaporthales,7
+Cp1_1,order,Glomerellales,4
+Cp1_1,order,Microascales,3
+Cp1_1,order,Sordariales,2
+Cp1_1,order,Xylariales,2
+Cp1_1,order,Durnavirales,1
+Cp1_1,order,Hypocreales,1
+Cp1_1,family,Cryphonectriaceae,4
+Cp1_1,family,Glomerellaceae,4
+Cp1_1,family,Ceratocystidaceae,3
+Cp1_1,family,Diaporthaceae,3
+Cp1_1,family,Cephalothecaceae,1
+Cp1_1,family,Chaetomiaceae,1
+Cp1_1,family,Hypoviridae,1
+Cp1_1,family,Hypoxylaceae,1
+Cp1_1,family,Sporocadaceae,1
+Cp1_1,genus,Colletotrichum,4
+Cp1_1,genus,Ceratocystis,3
+Cp1_1,genus,Chrysoporthe,3
+Cp1_1,genus,Diaporthe,3
+Cp1_1,genus,Acremonium,1
+Cp1_1,genus,Annulohypoxylon,1
+Cp1_1,genus,Cephalotheca,1
+Cp1_1,genus,Cryphonectria,1
+Cp1_1,genus,Hypovirus,1
+Cp1_1,genus,Pestalotiopsis,1
+Cp1_1,genus,Podospora,1
+Cp1_1,species,Acremonium chrysogenum,1
+Cp1_1,species,Annulohypoxylon stygium,1
+Cp1_1,species,Cephalotheca sulfurea,1
+Cp1_1,species,Ceratocystis albifundus,1
+Cp1_1,species,Ceratocystis cacaofunesta,1
+Cp1_1,species,Ceratocystis fimbriata,1
+Cp1_1,species,Chrysoporthe austroafricana,1
+Cp1_1,species,Chrysoporthe cubensis,1
+Cp1_1,species,Chrysoporthe deuterocubensis,1
+Cp1_1,species,Colletotrichum fioriniae,1
+Cp1_1,species,Colletotrichum lupini,1
+Cp1_1,species,Colletotrichum salicis,1
+Cp1_1,species,Colletotrichum tamarilloi,1
+Cp1_1,species,Cryphonectria hypovirus 1,1
+Cp1_1,species,Cryphonectria parasitica,1
+Cp1_1,species,Diaporthe eres,1
+Cp1_1,species,Diaporthe longicolla,1
+Cp1_1,species,Diaporthe phaseolorum,1
+Cp1_1,species,Pestalotiopsis fici,1
+Cp1_1,species,Podospora anserina,1
+Cp1_2,superkingdom,Eukaryota,19
+Cp1_2,superkingdom,Viruses,1
+Cp1_2,kingdom,Fungi,19
+Cp1_2,kingdom,Orthornavirae,1
+Cp1_2,subkingdom,Dikarya,19
+Cp1_2,phylum,Ascomycota,19
+Cp1_2,phylum,Pisuviricota,1
+Cp1_2,subphylum,Pezizomycotina,19
+Cp1_2,class,Sordariomycetes,19
+Cp1_2,class,Duplopiviricetes,1
+Cp1_2,subclass,Hypocreomycetidae,10
+Cp1_2,subclass,Sordariomycetidae,8
+Cp1_2,subclass,Xylariomycetidae,1
+Cp1_2,order,Diaporthales,7
+Cp1_2,order,Glomerellales,4
+Cp1_2,order,Hypocreales,3
+Cp1_2,order,Microascales,3
+Cp1_2,order,Durnavirales,1
+Cp1_2,order,Sordariales,1
+Cp1_2,order,Xylariales,1
+Cp1_2,family,Cryphonectriaceae,4
+Cp1_2,family,Glomerellaceae,4
+Cp1_2,family,Ceratocystidaceae,3
+Cp1_2,family,Diaporthaceae,3
+Cp1_2,family,Chaetomiaceae,1
+Cp1_2,family,Hypocreaceae,1
+Cp1_2,family,Hypoviridae,1
+Cp1_2,family,Hypoxylaceae,1
+Cp1_2,family,Nectriaceae,1
+Cp1_2,genus,Colletotrichum,4
+Cp1_2,genus,Ceratocystis,3
+Cp1_2,genus,Chrysoporthe,3
+Cp1_2,genus,Diaporthe,3
+Cp1_2,genus,Acremonium,1
+Cp1_2,genus,Annulohypoxylon,1
+Cp1_2,genus,Cryphonectria,1
+Cp1_2,genus,Fusarium,1
+Cp1_2,genus,Hypovirus,1
+Cp1_2,genus,Podospora,1
+Cp1_2,genus,Trichoderma,1
+Cp1_2,species,Acremonium chrysogenum,1
+Cp1_2,species,Annulohypoxylon stygium,1
+Cp1_2,species,Ceratocystis albifundus,1
+Cp1_2,species,Ceratocystis cacaofunesta,1
+Cp1_2,species,Ceratocystis fimbriata,1
+Cp1_2,species,Chrysoporthe austroafricana,1
+Cp1_2,species,Chrysoporthe cubensis,1
+Cp1_2,species,Chrysoporthe deuterocubensis,1
+Cp1_2,species,Colletotrichum fioriniae,1
+Cp1_2,species,Colletotrichum lupini,1
+Cp1_2,species,Colletotrichum salicis,1
+Cp1_2,species,Colletotrichum tamarilloi,1
+Cp1_2,species,Cryphonectria hypovirus 1,1
+Cp1_2,species,Cryphonectria parasitica,1
+Cp1_2,species,Diaporthe eres,1
+Cp1_2,species,Diaporthe longicolla,1
+Cp1_2,species,Diaporthe phaseolorum,1
+Cp1_2,species,Fusarium solani,1
+Cp1_2,species,Podospora anserina,1
+Cp1_2,species,Trichoderma reesei,1
+Cp2_1,superkingdom,Eukaryota,19
+Cp2_1,superkingdom,Viruses,1
+Cp2_1,kingdom,Fungi,19
+Cp2_1,kingdom,Orthornavirae,1
+Cp2_1,subkingdom,Dikarya,19
+Cp2_1,phylum,Ascomycota,19
+Cp2_1,phylum,Pisuviricota,1
+Cp2_1,subphylum,Pezizomycotina,19
+Cp2_1,class,Sordariomycetes,19
+Cp2_1,class,Duplopiviricetes,1
+Cp2_1,subclass,Hypocreomycetidae,11
+Cp2_1,subclass,Sordariomycetidae,8
+Cp2_1,order,Diaporthales,7
+Cp2_1,order,Hypocreales,4
+Cp2_1,order,Microascales,4
+Cp2_1,order,Glomerellales,3
+Cp2_1,order,Durnavirales,1
+Cp2_1,order,Sordariales,1
+Cp2_1,family,Ceratocystidaceae,4
+Cp2_1,family,Cryphonectriaceae,4
+Cp2_1,family,Diaporthaceae,3
+Cp2_1,family,Glomerellaceae,2
+Cp2_1,family,Nectriaceae,2
+Cp2_1,family,Chaetomiaceae,1
+Cp2_1,family,Hypoviridae,1
+Cp2_1,family,Plectosphaerellaceae,1
+Cp2_1,genus,Ceratocystis,3
+Cp2_1,genus,Chrysoporthe,3
+Cp2_1,genus,Diaporthe,3
+Cp2_1,genus,Acremonium,2
+Cp2_1,genus,Colletotrichum,2
+Cp2_1,genus,Fusarium,2
+Cp2_1,genus,Cryphonectria,1
+Cp2_1,genus,Endoconidiophora,1
+Cp2_1,genus,Hypovirus,1
+Cp2_1,genus,Podospora,1
+Cp2_1,genus,Verticillium,1
+Cp2_1,species,Acremonium chrysogenum,1
+Cp2_1,species,Acremonium fuci,1
+Cp2_1,species,Ceratocystis albifundus,1
+Cp2_1,species,Ceratocystis cacaofunesta,1
+Cp2_1,species,Ceratocystis fimbriata,1
+Cp2_1,species,Chrysoporthe austroafricana,1
+Cp2_1,species,Chrysoporthe cubensis,1
+Cp2_1,species,Chrysoporthe deuterocubensis,1
+Cp2_1,species,Colletotrichum acutatum,1
+Cp2_1,species,Colletotrichum fioriniae,1
+Cp2_1,species,Cryphonectria hypovirus 1,1
+Cp2_1,species,Cryphonectria parasitica,1
+Cp2_1,species,Diaporthe eres,1
+Cp2_1,species,Diaporthe longicolla,1
+Cp2_1,species,Diaporthe phaseolorum,1
+Cp2_1,species,Endoconidiophora resinifera,1
+Cp2_1,species,Fusarium oxysporum,1
+Cp2_1,species,Fusarium proliferatum,1
+Cp2_1,species,Podospora anserina,1
+Cp2_1,species,Verticillium dahliae,1
+Cp2_2,superkingdom,Eukaryota,19
+Cp2_2,superkingdom,Viruses,1
+Cp2_2,kingdom,Fungi,19
+Cp2_2,kingdom,Orthornavirae,1
+Cp2_2,subkingdom,Dikarya,19
+Cp2_2,phylum,Ascomycota,19
+Cp2_2,phylum,Pisuviricota,1
+Cp2_2,subphylum,Pezizomycotina,19
+Cp2_2,class,Sordariomycetes,19
+Cp2_2,class,Duplopiviricetes,1
+Cp2_2,subclass,Hypocreomycetidae,10
+Cp2_2,subclass,Sordariomycetidae,8
+Cp2_2,subclass,Xylariomycetidae,1
+Cp2_2,order,Diaporthales,7
+Cp2_2,order,Hypocreales,4
+Cp2_2,order,Microascales,4
+Cp2_2,order,Glomerellales,2
+Cp2_2,order,Durnavirales,1
+Cp2_2,order,Sordariales,1
+Cp2_2,order,Xylariales,1
+Cp2_2,family,Ceratocystidaceae,4
+Cp2_2,family,Cryphonectriaceae,4
+Cp2_2,family,Diaporthaceae,3
+Cp2_2,family,Nectriaceae,2
+Cp2_2,family,Chaetomiaceae,1
+Cp2_2,family,Glomerellaceae,1
+Cp2_2,family,Hypocreaceae,1
+Cp2_2,family,Hypoviridae,1
+Cp2_2,family,Plectosphaerellaceae,1
+Cp2_2,genus,Ceratocystis,3
+Cp2_2,genus,Chrysoporthe,3
+Cp2_2,genus,Diaporthe,3
+Cp2_2,genus,Fusarium,2
+Cp2_2,genus,Acremonium,1
+Cp2_2,genus,Colletotrichum,1
+Cp2_2,genus,Cryphonectria,1
+Cp2_2,genus,Endoconidiophora,1
+Cp2_2,genus,Hypovirus,1
+Cp2_2,genus,Phialemoniopsis,1
+Cp2_2,genus,Podospora,1
+Cp2_2,genus,Trichoderma,1
+Cp2_2,genus,Verticillium,1
+Cp2_2,species,Acremonium chrysogenum,1
+Cp2_2,species,Ceratocystis albifundus,1
+Cp2_2,species,Ceratocystis cacaofunesta,1
+Cp2_2,species,Ceratocystis fimbriata,1
+Cp2_2,species,Chrysoporthe austroafricana,1
+Cp2_2,species,Chrysoporthe cubensis,1
+Cp2_2,species,Chrysoporthe deuterocubensis,1
+Cp2_2,species,Colletotrichum fioriniae,1
+Cp2_2,species,Cryphonectria hypovirus 1,1
+Cp2_2,species,Cryphonectria parasitica,1
+Cp2_2,species,Diaporthe eres,1
+Cp2_2,species,Diaporthe longicolla,1
+Cp2_2,species,Diaporthe phaseolorum,1
+Cp2_2,species,Endoconidiophora resinifera,1
+Cp2_2,species,Fusarium oxysporum,1
+Cp2_2,species,Fusarium proliferatum,1
+Cp2_2,species,Phialemoniopsis curvata,1
+Cp2_2,species,Podospora anserina,1
+Cp2_2,species,Trichoderma reesei,1
+Cp2_2,species,Verticillium nonalfalfae,1
+GNO_1,superkingdom,Eukaryota,13
+GNO_1,kingdom,Fungi,13
+GNO_1,subkingdom,Dikarya,13
+GNO_1,phylum,Ascomycota,13
+GNO_1,subphylum,Pezizomycotina,13
+GNO_1,class,Sordariomycetes,12
+GNO_1,class,Leotiomycetes,1
+GNO_1,subclass,Sordariomycetidae,12
+GNO_1,order,Diaporthales,12
+GNO_1,family,Gnomoniaceae,5
+GNO_1,family,Cryphonectriaceae,4
+GNO_1,family,Diaporthaceae,2
+GNO_1,family,Erythrogloeaceae,1
+GNO_1,family,Myxotrichaceae,1
+GNO_1,genus,Gnomoniopsis,5
+GNO_1,genus,Chrysoporthe,3
+GNO_1,genus,Diaporthe,2
+GNO_1,genus,Amorphotheca,1
+GNO_1,genus,Cryphonectria,1
+GNO_1,genus,Dendrostoma,1
+GNO_1,species,Amorphotheca resinae,1
+GNO_1,species,Chrysoporthe austroafricana,1
+GNO_1,species,Chrysoporthe cubensis,1
+GNO_1,species,Chrysoporthe deuterocubensis,1
+GNO_1,species,Cryphonectria parasitica,1
+GNO_1,species,Dendrostoma castaneum,1
+GNO_1,species,Diaporthe longicolla,1
+GNO_1,species,Diaporthe phaseolorum,1
+GNO_1,species,Gnomoniopsis castaneae,1
+GNO_1,species,Gnomoniopsis smithogilvyi,1
+GNO_1,species,Gnomoniopsis sp. CBS 121917,1
+GNO_1,species,Gnomoniopsis sp. CBS 121918,1
+GNO_1,species,Gnomoniopsis sp. DP 0355,1
+GNO_2,superkingdom,Eukaryota,20
+GNO_2,kingdom,Fungi,20
+GNO_2,subkingdom,Dikarya,20
+GNO_2,phylum,Ascomycota,20
+GNO_2,subphylum,Pezizomycotina,20
+GNO_2,class,Sordariomycetes,13
+GNO_2,class,Eurotiomycetes,6
+GNO_2,class,Leotiomycetes,1
+GNO_2,subclass,Eurotiomycetidae,6
+GNO_2,subclass,Hypocreomycetidae,6
+GNO_2,subclass,Sordariomycetidae,5
+GNO_2,subclass,Xylariomycetidae,2
+GNO_2,order,Eurotiales,6
+GNO_2,order,Glomerellales,6
+GNO_2,order,Diaporthales,5
+GNO_2,order,Xylariales,2
+GNO_2,family,Aspergillaceae,6
+GNO_2,family,Glomerellaceae,6
+GNO_2,family,Cryphonectriaceae,4
+GNO_2,family,Diaporthaceae,1
+GNO_2,family,Hypoxylaceae,1
+GNO_2,family,Myxotrichaceae,1
+GNO_2,family,Sporocadaceae,1
+GNO_2,genus,Aspergillus,6
+GNO_2,genus,Colletotrichum,6
+GNO_2,genus,Chrysoporthe,3
+GNO_2,genus,Amorphotheca,1
+GNO_2,genus,Annulohypoxylon,1
+GNO_2,genus,Cryphonectria,1
+GNO_2,genus,Diaporthe,1
+GNO_2,genus,Pestalotiopsis,1
+GNO_2,species,Amorphotheca resinae,1
+GNO_2,species,Annulohypoxylon stygium,1
+GNO_2,species,Aspergillus eucalypticola,1
+GNO_2,species,Aspergillus flavus,1
+GNO_2,species,Aspergillus heteromorphus,1
+GNO_2,species,Aspergillus niger,1
+GNO_2,species,Aspergillus nomiae,1
+GNO_2,species,Aspergillus oryzae,1
+GNO_2,species,Chrysoporthe austroafricana,1
+GNO_2,species,Chrysoporthe cubensis,1
+GNO_2,species,Chrysoporthe deuterocubensis,1
+GNO_2,species,Colletotrichum acutatum,1
+GNO_2,species,Colletotrichum fioriniae,1
+GNO_2,species,Colletotrichum fructicola,1
+GNO_2,species,Colletotrichum gloeosporioides,1
+GNO_2,species,Colletotrichum lindemuthianum,1
+GNO_2,species,Colletotrichum siamense,1
+GNO_2,species,Cryphonectria parasitica,1
+GNO_2,species,Diaporthe longicolla,1
+GNO_2,species,Pestalotiopsis fici,1
+Gno_1,superkingdom,Eukaryota,20
+Gno_1,kingdom,Fungi,20
+Gno_1,subkingdom,Dikarya,20
+Gno_1,phylum,Ascomycota,20
+Gno_1,subphylum,Pezizomycotina,20
+Gno_1,class,Sordariomycetes,20
+Gno_1,subclass,Hypocreomycetidae,11
+Gno_1,subclass,Sordariomycetidae,8
+Gno_1,subclass,Xylariomycetidae,1
+Gno_1,order,Glomerellales,10
+Gno_1,order,Diaporthales,7
+Gno_1,order,Hypocreales,1
+Gno_1,order,Sordariales,1
+Gno_1,order,Xylariales,1
+Gno_1,family,Glomerellaceae,9
+Gno_1,family,Cryphonectriaceae,4
+Gno_1,family,Diaporthaceae,2
+Gno_1,family,Chaetomiaceae,1
+Gno_1,family,Gnomoniaceae,1
+Gno_1,family,Ophiocordycipitaceae,1
+Gno_1,family,Plectosphaerellaceae,1
+Gno_1,family,Sporocadaceae,1
+Gno_1,genus,Colletotrichum,9
+Gno_1,genus,Chrysoporthe,3
+Gno_1,genus,Diaporthe,2
+Gno_1,genus,Cryphonectria,1
+Gno_1,genus,Gnomonia,1
+Gno_1,genus,Hirsutella,1
+Gno_1,genus,Pestalotiopsis,1
+Gno_1,genus,Podospora,1
+Gno_1,genus,Verticillium,1
+Gno_1,species,Chrysoporthe austroafricana,1
+Gno_1,species,Chrysoporthe cubensis,1
+Gno_1,species,Chrysoporthe deuterocubensis,1
+Gno_1,species,Colletotrichum acutatum,1
+Gno_1,species,Colletotrichum aenigma,1
+Gno_1,species,Colletotrichum fioriniae,1
+Gno_1,species,Colletotrichum fructicola,1
+Gno_1,species,Colletotrichum gloeosporioides,1
+Gno_1,species,Colletotrichum lindemuthianum,1
+Gno_1,species,Colletotrichum lupini,1
+Gno_1,species,Colletotrichum salicis,1
+Gno_1,species,Colletotrichum tamarilloi,1
+Gno_1,species,Cryphonectria parasitica,1
+Gno_1,species,Diaporthe longicolla,1
+Gno_1,species,Diaporthe phaseolorum,1
+Gno_1,species,Gnomonia gnomon,1
+Gno_1,species,Hirsutella rhossiliensis,1
+Gno_1,species,Pestalotiopsis fici,1
+Gno_1,species,Podospora anserina,1
+Gno_1,species,Verticillium dahliae,1
+Gno_2,superkingdom,Eukaryota,20
+Gno_2,kingdom,Fungi,20
+Gno_2,subkingdom,Dikarya,20
+Gno_2,phylum,Ascomycota,20
+Gno_2,subphylum,Pezizomycotina,20
+Gno_2,class,Sordariomycetes,20
+Gno_2,subclass,Sordariomycetidae,16
+Gno_2,subclass,Hypocreomycetidae,3
+Gno_2,subclass,Xylariomycetidae,1
+Gno_2,order,Diaporthales,16
+Gno_2,order,Glomerellales,3
+Gno_2,order,Xylariales,1
+Gno_2,family,Gnomoniaceae,9
+Gno_2,family,Cryphonectriaceae,4
+Gno_2,family,Glomerellaceae,3
+Gno_2,family,Diaporthaceae,2
+Gno_2,family,Erythrogloeaceae,1
+Gno_2,family,Sporocadaceae,1
+Gno_2,genus,Gnomoniopsis,4
+Gno_2,genus,Chrysoporthe,3
+Gno_2,genus,Colletotrichum,3
+Gno_2,genus,Discula,3
+Gno_2,genus,Diaporthe,2
+Gno_2,genus,Apiognomonia,1
+Gno_2,genus,Cryphonectria,1
+Gno_2,genus,Dendrostoma,1
+Gno_2,genus,Gnomonia,1
+Gno_2,genus,Pestalotiopsis,1
+Gno_2,species,Apiognomonia errabunda,1
+Gno_2,species,Chrysoporthe austroafricana,1
+Gno_2,species,Chrysoporthe cubensis,1
+Gno_2,species,Chrysoporthe deuterocubensis,1
+Gno_2,species,Colletotrichum acutatum,1
+Gno_2,species,Colletotrichum fioriniae,1
+Gno_2,species,Colletotrichum gloeosporioides,1
+Gno_2,species,Cryphonectria parasitica,1
+Gno_2,species,Dendrostoma castaneum,1
+Gno_2,species,Diaporthe longicolla,1
+Gno_2,species,Diaporthe phaseolorum,1
+Gno_2,species,Discula campestris,1
+Gno_2,species,Discula destructiva,1
+Gno_2,species,Discula quercina,1
+Gno_2,species,Gnomonia gnomon,1
+Gno_2,species,Gnomoniopsis castaneae,1
+Gno_2,species,Gnomoniopsis macounii,1
+Gno_2,species,Gnomoniopsis paraclavulata,1
+Gno_2,species,Gnomoniopsis smithogilvyi,1
+Gno_2,species,Pestalotiopsis fici,1
+NA,superkingdom,Eukaryota,19
+NA,kingdom,Fungi,19
+NA,subkingdom,Dikarya,19
+NA,phylum,Ascomycota,19
+NA,subphylum,Pezizomycotina,19
+NA,class,Sordariomycetes,19
+NA,subclass,Hypocreomycetidae,11
+NA,subclass,Sordariomycetidae,7
+NA,subclass,Xylariomycetidae,1
+NA,order,Hypocreales,8
+NA,order,Diaporthales,6
+NA,order,Glomerellales,3
+NA,order,Sordariales,1
+NA,order,Xylariales,1
+NA,family,Nectriaceae,6
+NA,family,Cryphonectriaceae,4
+NA,family,Glomerellaceae,3
+NA,family,Ophiocordycipitaceae,2
+NA,family,Diaporthaceae,1
+NA,family,Gnomoniaceae,1
+NA,family,Hypoxylaceae,1
+NA,genus,Fusarium,5
+NA,genus,Chrysoporthe,3
+NA,genus,Colletotrichum,3
+NA,genus,Hirsutella,2
+NA,genus,Annulohypoxylon,1
+NA,genus,Cryphonectria,1
+NA,genus,Diaporthe,1
+NA,genus,Gnomonia,1
+NA,genus,Madurella,1
+NA,genus,Nectria,1
+NA,species,Annulohypoxylon stygium,1
+NA,species,Chrysoporthe austroafricana,1
+NA,species,Chrysoporthe cubensis,1
+NA,species,Chrysoporthe deuterocubensis,1
+NA,species,Colletotrichum fioriniae,1
+NA,species,Colletotrichum lupini,1
+NA,species,Colletotrichum tamarilloi,1
+NA,species,Cryphonectria parasitica,1
+NA,species,Diaporthe longicolla,1
+NA,species,Fusarium bambusae,1
+NA,species,Fusarium circinatum,1
+NA,species,Fusarium commune,1
+NA,species,Fusarium oxysporum,1
+NA,species,Fusarium proliferatum,1
+NA,species,Gnomonia gnomon,1
+NA,species,Hirsutella rhossiliensis,1
+NA,species,Hirsutella vermicola,1
+NA,species,Madurella mycetomatis,1
+NA,species,Nectria cinnabarina,1

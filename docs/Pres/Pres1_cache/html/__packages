@@ -2,3 +2,15 @@ base
 rmarkdown
 xaringanExtra
 RefManageR
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+DT
+htmlwidgets
+widgetframe
