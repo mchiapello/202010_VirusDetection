@@ -876,7 +876,7 @@ The “outm” stream will catch reads that matched a reference kmers
 &lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
 ]
 
-## Gemone removal
+## Genome removal
 
 ```
 &gt; bbduk.sh in=reads.fq out=unmatched.fq outm=matched.fq ref=genome.fa.gz k=31 hdist=1 stats=stats.txt
@@ -889,6 +889,349 @@ This will remove all reads that have a 31-mer match to genome sequences, allowin
 
 The “outm” stream will catch reads that matched a reference kmers
 
+]
+
+---
+
+# BBNorm - Normalize .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+## Normalize coverage
+
+```
+&gt; bbnorm.sh in=reads.fq out=normalized.fq
+``` 
+&lt;br&gt;
+.par23[
+BBNorm is designed to normalize coverage by down-sampling reads, resulting in a flat coverage distribution
+
+This process can dramatically accelerate assembly and often improve assembly quality
+
+The resulting file can no be used for mapping purpose
+
+]
+
+---
+
+# Data cleaning .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+## Resulting files
+
+```
+CP1_1.fastq.gz 5.6G
+CP1_2.fastq.gz 5.9G
+```
+&lt;br&gt;
+```
+CP1_1_clean.fastq.gz 352M
+CP1_2_clean.fastq.gz 449M
+```
+&lt;br&gt;
+```
+CP1_1_map.fastq.gz 1.8G
+CP1_2_map.fastq.gz 2.3G
+```
+
+---
+
+# Data cleaning .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 640 512"&gt;&lt;path d="M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"/&gt;&lt;/svg&gt;
+]
+
+&lt;img src="images/questions.png" width="500px" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center, clear
+
+# .black[RNA-Seq De novo Assembly] 
+
+----
+
+---
+
+class: clear, middle, center
+
+.f70[.f900[Trinity]]
+
+.m0tp[
+.f15[https://github.com/trinityrnaseq/trinityrnaseq/wiki]
+]
+
+----
+
+---
+
+layout: true
+
+# Trinity .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 512 512"&gt;&lt;path d="M166 116.9c0 23.4-16.4 49.1-72.5 49.1H23.4l21-88.8h67.8c42.1 0 53.8 23.3 53.8 39.7zm126.2-39.7h-67.8L205.7 166h70.1c53.8 0 70.1-25.7 70.1-49.1.1-16.4-11.6-39.7-53.7-39.7zM88.8 208.1H21L0 296.9h70.1c56.1 0 72.5-23.4 72.5-49.1 0-16.3-11.7-39.7-53.8-39.7zm180.1 0h-67.8l-18.7 88.8h70.1c53.8 0 70.1-23.4 70.1-49.1 0-16.3-11.7-39.7-53.7-39.7zm189.3-53.8h-67.8l-18.7 88.8h70.1c53.8 0 70.1-23.4 70.1-49.1.1-16.3-11.6-39.7-53.7-39.7zm-28 137.9h-67.8L343.7 381h70.1c56.1 0 70.1-23.4 70.1-49.1 0-16.3-11.6-39.7-53.7-39.7zM240.8 346H173l-18.7 88.8h70.1c56.1 0 70.1-25.7 70.1-49.1.1-16.3-11.6-39.7-53.7-39.7z"/&gt;&lt;/svg&gt;
+]
+
+---
+
+.pull-left[
+.m0tp[
+.par15[
+
+- Trinity, developed at the Broad Institute and the Hebrew University of Jerusalem, represents a novel method for the efficient and robust de novo reconstruction of transcriptomes from RNA-seq data
+
+- Trinity combines three independent software modules:
+  - **Inchworm** assembles the RNA-seq data into the unique sequences of transcripts, often generating full-length transcripts for a dominant isoform, but then reports just the unique portions of alternatively spliced transcripts
+
+  - **Chrysalis** clusters the Inchworm contigs into clusters and constructs complete de Bruijn graphs for each cluster. Each cluster represents the full transcriptonal complexity for a given gene (or sets of genes that share sequences in common). Chrysalis then partitions the full read set among these disjoint graphs.
+
+  - **Butterfly** then processes the individual graphs in parallel, tracing the paths that reads and pairs of reads take within the graph, ultimately reporting full-length transcripts for alternatively spliced isoforms, and teasing apart transcripts that corresponds to paralogous genes.
+]
+]
+]
+
+    
+.pull-right[
+&lt;br&gt;
+&lt;img src="images/t1.png" width="500px" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.pull-left[
+.m0tp[
+.par15[
+
+- Trinity, developed at the Broad Institute and the Hebrew University of Jerusalem, represents a novel method for the efficient and robust de novo reconstruction of transcriptomes from RNA-seq data
+
+- Trinity combines three independent software modules:
+  - **Inchworm** assembles the RNA-seq data into the unique sequences of transcripts, often generating full-length transcripts for a dominant isoform, but then reports just the unique portions of alternatively spliced transcripts
+
+  - **Chrysalis** clusters the Inchworm contigs into clusters and constructs complete de Bruijn graphs for each cluster. Each cluster represents the full transcriptonal complexity for a given gene (or sets of genes that share sequences in common). Chrysalis then partitions the full read set among these disjoint graphs.
+
+  - **Butterfly** then processes the individual graphs in parallel, tracing the paths that reads and pairs of reads take within the graph, ultimately reporting full-length transcripts for alternatively spliced isoforms, and teasing apart transcripts that corresponds to paralogous genes.
+]
+]
+]
+
+    
+.pull-right[
+&lt;img src="images/t2.png" width="450px" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## Trinity commands
+
+- .font80[De-novo assembly]
+
+```
+&gt; Trinity --seqType fq --max_memory 50G --left reads_1.fq  --right reads_2.fq --CPU 6
+```
+
+- .font80[Genome guides assembly]
+
+```
+&gt; Trinity --genome_guided_bam rnaseq_alignments.csorted.bam --max_memory 50G --genome_guided_max_intron 10000 --CPU 6
+```
+
+---
+
+## Output of Trinity Assembly
+
+.par23[
+- When Trinity completes, it will create a 'Trinity.fasta' output file in the 'trinity\_out\_dir/' output directory
+
+- Trinity groups transcripts into clusters based on shared sequence content
+
+- Such a transcript cluster is very loosely referred to as a 'gene'
+
+- This information is encoded in the Trinity fasta accession
+
+]
+
+--
+
+```
+&gt;TRINITY_DN1000_c115_g5_i1 len=247 path=[31015:0-148 23018:149-246]
+AATCTTTTTTGGTATTGGCAGTACTGTGCTCTGGGTAGTGATTAGGGCAAAAGAAGACAC
+ACAATAAAGAACCAGGTGTTAGACGTCAGCAAGTCAAGGCCTTGGTTCTCAGCAGACAGA
+AGACAGCCCTTCTCAATCCTCATCCCTTCCCTGAACAGACATGTCTTCTGCAAGCTTCTC
+CAAGTCAGTTGTTCACAGGAACATCATCAGAATAAATTTGAAATTATGATTAGTATCTGA
+TAAAGCA
+```
+
+---
+
+## Output of Trinity Assembly
+
+```
+&gt;TRINITY_DN1000_c115_g5_i1 len=247 path=[31015:0-148 23018:149-246]
+AATCTTTTTTGGTATTGGCAGTACTGTGCTCTGGGTAGTGATTAGGGCAAAAGAAGACAC
+ACAATAAAGAACCAGGTGTTAGACGTCAGCAAGTCAAGGCCTTGGTTCTCAGCAGACAGA
+AGACAGCCCTTCTCAATCCTCATCCCTTCCCTGAACAGACATGTCTTCTGCAAGCTTCTC
+CAAGTCAGTTGTTCACAGGAACATCATCAGAATAAATTTGAAATTATGATTAGTATCTGA
+TAAAGCA
+```
+
+--
+
+.par20[
+
+**TRINITY_DN1000_c115**_g5_i1: indicates Trinity read cluster
+
+TRINITY_DN1000_c115_**g5**_i1: indicates Trinity gene
+
+TRINITY_DN1000_c115_g5_**i1**: indicates Trinity isoform
+
+**path=[31015:0-148 23018:149-246]**: indicates the path traversed in the Trinity compacted de Bruijn graph to construct that transcript 
+
+]
+
+--
+
+.right[Once your assembly is complete, you'll want to know how 'good' it is]
+
+---
+
+## Examine the RNA-Seq read representation of the assembly
+
+To assess the read composition of our assembly, we want to capture and count all reads that map to our assembled transcripts
+
+.font60[First, build a bowtie2 index for the transcriptome]
+
+```
+&gt; bowtie2-build Trinity.fasta Trinity.fasta
+```
+
+.font60[Then perform the alignment to just capture the read alignment statistics]
+
+```
+&gt; bowtie2 -p 10 -q --no-unal -k 20 -x Trinity.fasta -1 reads_1.fq -2 reads_2.fq  \
+     2&gt;align_stats.txt| samtools view -@10 -Sb -o bowtie2.bam 
+```
+
+---
+
+## Examine the RNA-Seq read representation of the assembly
+
+To assess the read composition of our assembly, we want to capture and count all reads that map to our assembled transcripts
+
+.font60[Visualize statistics]
+
+.pull-left[
+.m0tp[
+.code50[
+```
+&gt; cat 2&gt;&amp;1 align_stats.txt
+
+76201190 reads; of these:
+  76201190 (100.00%) were paired; of these:
+    18166307 (23.84%) aligned concordantly 0 times
+    17026716 (22.34%) aligned concordantly exactly 1 time
+    41008167 (53.82%) aligned concordantly &gt;1 times
+    ----
+    18166307 pairs aligned concordantly 0 times; of these:
+      1769907 (9.74%) aligned discordantly 1 time
+    ----
+    16396400 pairs aligned 0 times concordantly or discordantly; of these:
+      32792800 mates make up the pairs; of these:
+        15287552 (46.62%) aligned 0 times
+        3874965 (11.82%) aligned exactly 1 time
+        13630283 (41.56%) aligned &gt;1 times
+*89.97% overall alignment rate
+```
+]
+]
+]
+
+    
+.pull-right[
+Ideally, at least ~80% of your input RNA-Seq reads are represented by your transcriptome assembly
+]
+
+---
+
+## Post Transcriptome Assembly Downstream Analyses
+
+.par23[
+
+Once your assembly is complete, there are several analyses you will likely want to pursue to explore aspects of the biology of your organism based on your assembled transcripts and the input RNA-Seq data
+
+- **Quantifying transcript and gene abundance**. This is a prerequisite to many other analyses such as examining differentially expressed transcripts among your samples.
+
+- **Quality checking your samples and biological replicates**. Make sure the relationships among your samples and biological replicates make sense. If there are any confounding aspects to the data, such as outliers or batch effects, you'll want to catch them as early as possible and account for them in your further data explorations.
+
+- **Perform differential expression analysis**. Trinity provides direct support for several DE analysis methods, including edgeR, DESeq2, Limma/Voom, and ROTS.
+
+- **Extract coding regions** using TransDecoder and functionally annotate the transcripts using Trinotate.
+
+]
+
+---
+
+&lt;img src="images/questions.png" width="500px" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center, clear
+
+# .black[Viral contig identification] 
+
+----
+
+---
+
+class: clear, middle, center
+
+.f70[.f900[NCBI BLAST+]]
+
+.m0tp[
+.f15[https://www.ncbi.nlm.nih.gov/books/NBK131777]
+]
+
+----
+
+---
+
+layout: true
+
+# BLAST+ .rightH1[
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:white;" viewBox="0 0 448 512"&gt;&lt;path d="M448 73.143v45.714C448 159.143 347.667 192 224 192S0 159.143 0 118.857V73.143C0 32.857 100.333 0 224 0s224 32.857 224 73.143zM448 176v102.857C448 319.143 347.667 352 224 352S0 319.143 0 278.857V176c48.125 33.143 136.208 48.572 224 48.572S399.874 209.143 448 176zm0 160v102.857C448 479.143 347.667 512 224 512S0 479.143 0 438.857V336c48.125 33.143 136.208 48.572 224 48.572S399.874 369.143 448 336z"/&gt;&lt;/svg&gt;
+]
+
+---
+
+## ViralDB creation - Proteins
+
+| Name | group | taxid |
+|---|---|---|
+|Virtovirus|genus|txid1925802|
+|Papanivirus|genus|txid1921431|
+|Aumaivirus|genus|txid1917979|
+|Albetovirus|genus|txid1915204|
+|Sarthroviridae|family|txid1922240|
+|Polymycoviridae|family|txid2732900|
+|Cressdnaviricota|phylum|txid2732416|
+|Orthornavirae|kingdom|txid2732396|
+
+.center.font70[https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/]
+
+---
+
+## Diamond blast
+
+.content-box-red[
+**DIAMOND** is a sequence aligner for protein and translated DNA searches, designed for high performance analysis of big sequence data
+]
+
+.par23[
+The key features are:
+
+- Pairwise alignment of proteins and translated DNA at 100x-20,000x speed of BLAST.
+
+- Low resource requirements and suitable for running on standard desktops or laptops.
+    
+- Various output formats, including BLAST pairwise, tabular and XML, as well as taxonomic classification.
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
