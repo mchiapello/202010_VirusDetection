@@ -72,6 +72,12 @@
     margin-bottom: 0px;
 }
 
+.par10 p, .par10 pre {
+    line-height: 20px;
+    font-size: 15px;
+    margin: 10px;
+}
+
 .par15 p, .par15 ul li, .par15 ol li {
     line-height: 20px;
     font-size: 15px;
@@ -174,6 +180,16 @@
 
 .table10 table {
     font-size: 10px;
+}
+
+.scroll-box-20 {
+      height:20em;
+      overflow-y: scroll;
+}
+
+.scroll-output {
+      height: 90%;
+      overflow-y: scroll;
 }
 
 /**************

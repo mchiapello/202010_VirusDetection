@@ -1584,4 +1584,506 @@ layout: true
 
 ---
 
+<br><br>
+.content-box-red[
+Virus identification was performed separately for each library<br> to reduce redundancy of viruses present in different libraries<br> the results of each library were compared with the others<br> to obtain a list of unique viruses
+]
 
+---
+
+## STEP 1 - BLAST
+
+First of all we blasted all the selected viral contigs one aginst the other
+
+```
+> makeblastdb -in allVOI.fasta -dbtype nucl
+
+> blastn -query allVOI.fasta -db allVOI -outfmt 6 -out allVOI.tab -max_target_seqs 1
+```
+
+---
+
+## STEP 2 - CLUSTER
+
+1. Sequences are then groupped by identity in clusters (above 90%)
+
+1. For each cluster the master contig is selected. The master conting is the longer.
+
+1. Only the master contigs is reported (all the other sequences in the cluster have more than 90% identity)
+
+1. The shorter viral contigs of the group are discarted for the subsequent analysis
+
+---
+
+.pull-left[
+.m0tp[
+.code40[
+```
+###############################################################################
+# Script to parse the blast results of the comparison of all sequences agaist
+# all sequences
+#
+# Blast call was:
+# makeblastdb -in allVOI.fasta -dbtype nucl
+# blastn -query allVOI.fasta -db allVOI.fasta --max_target_seqs 1 -outfmt '6 qaccver saccver pident length 
+#   mismatch gapopen qstart qend sstart send evalue bitscore' -out allVOI_nucl.tab
+###############################################################################
+
+# Load libraries
+library(tidyverse)
+library(ggthemes)
+library(cowplot)
+
+# Read data
+df <- read_delim("allVOI_nucl.tab", delim = "\t", col_names = FALSE)
+names(df) <- c("query", "subject", "identity", "alignment_length", "mismatches",
+               "gaps", "q.start", "q.end", "s.start", "s.end", "evalue", "bit score")
+
+# Transform data 
+#' split column to have individual pieces of information
+#' Done both for query and for subject
+#' id is the threshold for identity
+id <- 90
+#' alignment_length should be longer than 1000
+df1 <- df %>%
+    mutate(qPool = str_replace(query, "(DMG\\-[:upper:]|DMS\\d+).*", "\\1")) %>%
+    mutate(qTrinity = str_replace(query, ".*(TRINITY_\\w*_c\\d_g+\\d_i+\\d+|Contig\\d+).*", "\\1")) %>%
+    mutate(qVirus = str_replace(query, ".*_i\\d+_(.*)_len=.*|.*Contig\\d+_(.*)_len=.*", "\\1\\2"),
+           qVirus = str_replace_all(qVirus, "-", " ")) %>%
+    mutate(qLength = str_replace(query, ".*len=(\\d*)", "\\1")) %>%
+    mutate(sPool = str_replace(subject, "(DMG\\-[:upper:]|DMS\\d+).*", "\\1")) %>%
+    mutate(sTrinity = str_replace(subject, ".*(TRINITY_\\w*_c\\d+_g\\d+_i\\d+|Contig\\d+).*", "\\1")) %>%
+    mutate(sVirus = str_replace(subject, ".*_i\\d_(.*)_len=.*|.*Contig\\d+_(.*)_len=.*", "\\1\\2"),
+           sVirus = str_replace_all(sVirus, "-", " ")) %>%
+    mutate(sLength = str_replace(subject, ".*len=(\\d*)", "\\1")) %>%
+    select(qPool:sLength, identity:`bit score`, query, subject) %>%
+    mutate(self = case_when(query == subject ~ 1,
+                            TRUE ~ 0),
+           identOver = case_when(identity >= id ~ 1,
+                                 TRUE ~ 0),
+           alignment_identity = case_when(alignment_length > 1000 ~ 1,
+                                          TRUE ~ 0)) %>%
+    mutate(Group = NA)
+```
+]
+]
+]
+
+.pull-right[
+.m0tp[
+.code40[
+```
+###############################################################################
+# Remove duplicates
+###############################################################################
+# Extract the full list of query IDs
+qq <- df1 %>% 
+    arrange(desc(as.numeric(qLength))) %>%
+    pull(query) %>%
+    unique()
+
+# Remove the duplicates
+for ( i in 1:nrow(df1)){
+    tmp <- NULL
+    tmp <- df1 %>%
+        filter(query == qq[i]) %>%
+        filter(alignment_identity != 0) %>%
+        filter(identOver == 1) %>%
+        filter(subject != qq[i]) %>%
+        pull(subject)
+    qq <- qq[!(qq %in% tmp)]
+    df1 <- df1 %>%
+        filter(!(query %in% tmp))
+}
+
+###############################################################################
+# Filter data
+###############################################################################
+# Create groups
+df2 <- df1 %>%
+    group_by(query) %>%
+    mutate(Group = ifelse(identity > id, query, NA)) %>%
+    select(-(mismatches:evalue)) %>%
+    ungroup
+
+# Remove contigs not in groups and with alignment lenght below the threshold
+df3 <- df2 %>%
+    filter(!is.na(Group)) %>%
+    filter(alignment_identity == 1) %>%
+    ungroup
+
+# Remove query duplicates based on alignment_length, identity and bit score
+df4 <- df3 %>%
+    group_by(Group) %>%
+    top_n(1, alignment_length) %>%
+    top_n(1, identity) %>%
+    top_n(1, `bit score`) %>%
+    ungroup
+```
+
+]
+]
+]
+
+---
+
+class: middle, center, clear
+
+# .black[Mapping] 
+
+----
+
+---
+
+class: clear, middle, center
+
+.f70[.f900[Bowtie2 - Samtools]]
+
+.m0tp[
+.f15[http://bowtie-bio.sourceforge.net/bowtie2/index.shtml - http://www.htslib.org/]
+]
+
+----
+
+---
+
+layout: true
+
+# Mapping .rightH1[
+`r fontawesome::fa("layer-group", fill = "white")`
+]
+
+---
+
+## Mapping: align reads to reference sequences (or contigs)
+
+.par23[
+- Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences
+
+- Bowtie 2 outputs alignments in SAM format, enabling interoperation with a large number of other tools (e.g. SAMtools) that use SAM
+
+- Bowtie 2 is often the first step in pipelines for comparative genomics, including for variation calling, ChIP-seq, RNA-seq, BS-seq
+
+- Sequence Alignment Map (SAM) is a text-based format originally for storing biological sequences aligned to a reference sequence
+
+- The binary equivalent of a SAM file is a Binary Alignment Map (BAM) file, which stores the same data in a compressed binary representation
+]
+
+---
+
+## Bowtie2
+
+.code70[Prepare sequences to map]
+
+```
+> bowtie2-build -f viralContigs.fasta  tomap
+```
+
+.code70[Make the alignment]
+
+```
+bowtie2 -x tomap -1 CP1_1_map.fastq.gz -2 Cp1_2_map.fastq.gz  -p 20 --no-mixed --no-discordant --no-unal -S Cp1.sam
+```
+
+---
+
+## Samtools
+
+.m0b[
+Samtools is a suite of programs for interacting with high-throughput sequencing data
+]
+
+.pull-left[
+.m0tb[
+.par20[
+.code60[Extract all the alignment]
+
+```
+> samtools view -@20 -Sb Cp1.sam -o Cp1.bam
+```
+
+.code60[Sort alignments by leftmost coordinates]
+```
+> samtools sort -@ 10 -m 5G Cp1.bam -o Cp1.sort.bam
+```
+
+.code60[Index a coordinate for fast random access]
+```
+> samtools index Cp1.sort.bam
+```
+
+.code60[Retrieve and print stats in the index file]
+```
+> samtools idxstats Cp1.sort.bam > Cp1.sort.bam.counted.txt
+```
+]
+]
+]
+---
+
+## Samtools
+
+.m0b[
+Samtools is a suite of programs for interacting with high-throughput sequencing data
+]
+
+.pull-left[
+.m0tb[
+.par20[
+.code60[Extract all the alignment]
+
+```
+> samtools view -@20 -Sb Cp1.sam -o Cp1.bam
+```
+
+.code60[Sort alignments by leftmost coordinates]
+```
+> samtools sort -@ 10 -m 5G Cp1.bam -o Cp1.sort.bam
+```
+
+.code60[Index a coordinate for fast random access]
+```
+> samtools index Cp1.sort.bam
+```
+
+.code60[Retrieve and print stats in the index file]
+```
+> samtools idxstats Cp1.sort.bam > Cp1.sort.bam.counted.txt
+```
+]
+]
+]
+
+.pull-right[
+.m0tp[
+.table10[
+|Transcript| Len| Mapped|
+|---|---|---|
+|TRINITY_DN10266_c0_g1_i1|        2495|    722300|  
+|TRINITY_DN8498_c0_g1_i1 |        2465|    423606|
+|TRINITY_DN11312_c0_g1_i2|        4608|    111748|  
+|TRINITY_DN11312_c0_g2_i2|        4569|    25476 |  
+|TRINITY_DN11312_c0_g3_i1|        2052|    4058  |  
+|TRINITY_DN11729_c0_g1_i3|        4211|    40372 |  
+|TRINITY_DN11243_c0_g1_i1|        1689|    21908 |  
+|TRINITY_DN11055_c0_g1_i1|        6334|    3330  |  
+|TRINITY_DN7956_c0_g1_i1 |        5878|    16558 |
+]
+]
+]
+---
+
+## Samtools
+
+.m0b[
+Since the sequencing was stranded, reads mapping on forward or reverse strand can be infer
+]
+
+.pull-left[
+.m0tb[
+.par10[
+.code60[Extract alignment from the first segment in the template (read1)]
+
+```
+> samtools view -F 64 -b -@20 -Sb Cp1.sort.bam -o Cp1.RR.sort.bam
+```
+
+.code60[Extract alignment on the reverse and foeward strand]
+
+```
+> samtools view -f 0x10 -b Cp1.RR.sort.bam -o Cp1.negativeStrand.RR.sort.bam
+> samtools view -F 0x10 -b Cp1.RR.sort.bam -o Cp1.positiveStrand.RR.sort.bam
+```
+
+.code60[Index the Stranded files]
+```
+> samtools index Cp1.negativeStrand.RR.sort.bam
+> samtools index Cp1.positiveStrand.RR.sort.bam
+```
+
+.code60[Retrieve and print stats in the index file]
+```
+> samtools idxstats Cp1.negativeStrand.RR.sort.bam > Cp1.negativeStrand.RR.sort.bam.counted.txt
+> samtools idxindex Cp1.positiveStrand.RR.sort.bam > Cp1.positiveStrand.RR.sort.bam.counted.txt
+```
+]
+]
+]
+
+---
+
+## Samtools
+
+.m0b[
+Since the sequencing was stranded, reads mapping on forward or reverse strand can be infer
+]
+
+.table10[
+|Transcript|Len|THR-A_All|THR-A_Negative|THR-A_Positive|THR-B_All|THR-B_Negative|THR-B_Positive|
+|---|---|---|---|---|---|---|---|
+|ThassRNAV1|19679|8504|70|8434|0|0|0|
+|ThassRNAV10|6357|10|10|0|26|24|2|
+|ThassRNAV12|4173|0|0|0|3832|4|3828|
+|ThassRNAV14|3135|0|0|0|6868|12|6856|
+|ThassRNAV15|2816|18|0|18|25084|118|24966|
+|ThassRNAV16|2646|0|0|0|198|28|170|
+|ThassRNAV19|1541|0|0|0|4614|4|4610|
+|ThassRNAV2|14242|18342|52|18290|0|0|0|
+|ThassRNAV23|3063|60|0|60|10710|18|10692|
+|ThassRNAV24|2856|43696|48|43648|159906|148|159758|
+|ThassRNAV25|1604|15640|22|15618|63554|86|63468|
+|ThassRNAV26|3345|25866|18|25848|882|0|882|
+]
+
+---
+
+class: middle, center, clear
+
+# .black[Taxonomy classification] 
+
+----
+
+---
+
+class: clear, middle, center
+
+.f70[.f900[Kraken2 - Pavian]]
+
+.m0tp[
+.f15[https://ccb.jhu.edu/software/kraken2 - https://github.com/fbreitwieser/pavian]
+]
+
+----
+
+---
+
+layout: true
+
+# Taxonomy classification .rightH1[
+`r fontawesome::fa("code-branch", fill = "white")`
+]
+
+---
+
+## Kraken2
+
+.par25[
+- Kraken 2 is a taxonomic classification system using exact k-mer matches to achieve high accuracy and fast classification speeds
+
+- This classifier matches each k-mer within a query sequence to the lowest common ancestor (LCA) of all genomes containing the given k-mer.
+
+- The k-mer assignments inform the classification algorithm
+
+]
+
+---
+
+## Kraken2
+
+.pull-left[
+.par25[
+Download and install a taxonomy
+
+```
+> kraken2-build --download-library --db $DBNAME
+```
+
+Build the database
+
+```
+> kraken2-build --build --db $DBNAME
+```
+
+Classify a set of sequences
+
+```
+> kraken2 --db $DBNAME seqs.fa --report KrakenResults.txt
+```
+]]
+
+.pull-right[
+.par15[
+$DBNAME
+
+- archaea: RefSeq complete archaeal genomes/proteins
+- bacteria: RefSeq complete bacterial genomes/proteins
+- plasmid: RefSeq plasmid nucleotide/protein sequences
+- viral: RefSeq complete viral genomes/proteins
+- human: GRCh38 human genome/proteins
+- fungi: RefSeq complete fungal genomes/proteins
+- plant: RefSeq complete plant genomes/proteins
+- protozoa: RefSeq complete protozoan genomes/proteins
+- nr: NCBI non-redundant protein database
+- nt: NCBI non-redundant nucleotide database
+- UniVec: NCBI-supplied database of vector, adapter, linker, and primer sequences that may be contaminating sequencing projects and/or assemblies
+- UniVec_Core: A subset of UniVec chosen to minimize false positive hits to the vector database
+- env_nr and env_nt are no longer supported by NCBI and therefore are no longer available for download.
+
+]
+]
+
+---
+
+## Kraken2
+
+.pull-left[
+.table10[
+|PCF|NFC|NFA|RANK|taxID|Name|
+|---|---|---|---|---|---|
+|11.22	|5829360	|5829360	|U	|0|unclassified
+| 88.77	|46102683	|118688	    |R	|1|root
+| 88.52	|45968988	|83131	    |R1	|131567|cellular organisms
+| 87.14	|45251771	|7780640    |D	|2759|Eukaryota
+| 69.65	|36171445	|152301	    |D1	|33154|Opisthokonta
+| 69.10	|35884157	|9063	    |K	|33208|Metazoa
+| 69.08	|35873749	|144551	    |K1	|6072|Eumetazoa
+| 68.77	|35713975	|349190	    |K2	|33213|Bilateria
+| 66.38	|34475552	|243088	    |K3	|33317|Protostomia
+| 65.74	|34142026	|13642	    |K4	|1206794|Ecdysozoa
+| 65.67	|34104628	|1151	    |K5	|88770|Panarthropoda
+| 65.67	|34103393	|85472	    |P	|6656|Arthropoda
+| 65.47	|34002715	|4364	    |P1	|197563|Mandibulata
+| 65.47	|33997966	|105933	    |P2	|197562|Pancrustacea
+| 65.20	|33862221	|5616	    |P3	|6960|Hexapoda
+| 65.19	|33853865	|723	    |C	|50557|Insecta
+
+]]
+
+.pull-right[
+.table10[
+|PCF|NFC|NFA|RANK|taxID|Name|
+|---|---|---|---|---|---|
+| 65.19	|33853073	|162	    |C1	|85512|Dicondylia
+| 65.19	|33852748	|7179	    |C2	|7496|Pterygota
+| 65.17	|33843800	|488178	    |C3	|33340|Neoptera
+| 62.07	|32236575	|85232	    |C4	|33342|Paraneoptera
+| 61.83	|32109081	|2166	    |O	|30262|Thysanoptera
+| 61.82	|32106604	|5403	    |O1	|38130|Terebrantia
+| 61.74	|32062963	|3	        |O2	|45049|Thripoidea
+| 61.74	|32062879	|161542	    |F	|45053|Thripidae
+| 61.42	|31894673	|115896	    |F1	|153976|Thripinae
+| 60.02	|31168390	|15598	    |G	|45059|Frankliniella
+| 59.91	|31112953	|31112953	|S	|133901|Frankliniella occidentalis
+|  0.04	|22870	    |22870	    |S	|163893|Frankliniella intonsa
+|  0.03	|14747	    |14747	    |S	|407007|Frankliniella bispinosa
+|  0.00	|1024	    |1024	    |S	|1734071|Frankliniella brunnea
+|  0.00	|426	    |426	    |S	|1734075|Frankliniella rostrata
+|  0.00	|334	    |334	    |S	|2599113|Frankliniella xanthaner
+
+]]
+
+.pull-right[
+.table10[
+|PCF|NFC|NFA|RANK|taxID|Name|
+|---|---|---|---|---|---|
+
+
+    Percentage of fragments covered by the clade rooted at this taxon
+    Number of fragments covered by the clade rooted at this taxon
+    Number of fragments assigned directly to this taxon
+    A rank code, indicating (U)nclassified, (R)oot, (D)omain, (K)ingdom, (P)hylum, (C)lass, (O)rder, (F)amily, (G)enus, or (S)pecies. Taxa that are not at any of these 10 ranks have a rank code that is formed by using the rank code of the closest ancestor rank with a number indicating the distance from that rank. E.g., "G2" is a rank code indicating a taxon is between genus and species and the grandparent taxon is at the genus rank.
+    NCBI taxonomic ID number
+    Indented scientific name
+
+
+]]
