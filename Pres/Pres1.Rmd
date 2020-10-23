@@ -70,6 +70,7 @@ class: clear
 
 .f40[**Agenda**]
 
+.pull-left[
 .par26[
 
 - Pipeline
@@ -80,21 +81,27 @@ class: clear
   - Manual selection I
   - Blast against NCBInr
   - Manual selection II
+  - Uni-virus list
   - Mapping
+  - Taxonomy classification
 
-- Orfans
+- Orfans identification
+]
+]
 
-- General recommandations
+.pull-right[
+.par26[
+
+- General recommandations<br><br>
   - Software version
   - Avoid manual operation
   - Master script
   - Backup
   - Version control
   - Working directory  
+
 ]
-
-
-
+]
 
 ---
 
@@ -1088,7 +1095,6 @@ layout: true
 
     
 .pull-right[
-<br>
 ```{r echo=FALSE, out.width="500px"}
 knitr::include_graphics("images/t1.png")
 ```
@@ -1470,3 +1476,112 @@ Blast against NCBInr allows to identify the contigs that are not viral
 <br>
 They can be fragments integrated in the host genome
 ]
+<br>
+.table10[
+|qseqid|qlen|sseqid|slen|pident|length|evalue|DESC|TAXO|
+|---|---|---|---|---|---|---|---|---|
+|**CP1_TRINITY_DN1183_c1_g2_i2**|**2575**|**KAF3761644.1**|**647**|**100**|**647**|**0**|**acetyl-CoA synthetase-like protein [Cryphonectria parasitica EP155]**|**Fungi**|
+|**CP1_TRINITY_DN1274_c0_g1_i5**|**3017**|**KAF3761985.1**|**699**|**100**|**672**|**0**|**acetyl-CoA synthetase-like protein [Cryphonectria parasitica EP155]**|**Fungi**|
+|**GNO_TRINITY_DN6423_c0_g2_i1**|**3795**|**ROW18252.1**|**994**|**89.3**|**1002**|**0**|**hypothetical protein VPNG_00226 [Cytospora leucostoma]**|**Fungi**|
+|**CP1_TRINITY_DN1611_c0_g1_i1**|**3536**|**ROV98340.1**|**821**|**96.7**|**821**|**0**|**hypothetical protein VMCG_07088 [Valsa malicola]**|**Fungi**|
+|CP1_TRINITY_DN37_c0_g2_i1|12722|AUZ41744.1|3164|99.4|3164|0|ORF B [Cryphonectria hypovirus 1]|Viruses|
+|CP2_TRINITY_DN16_c0_g1_i6|12735|AUZ41744.1|3164|99.4|3164|0|ORF B [Cryphonectria hypovirus 1]|Viruses|
+|GNO_TRINITY_DN159_c0_g1_i4|2417|AHF48631.1|703|67.1|695|6E-268|RNA-dependent RNA polymerase [Sclerotinia sclerotiorum mitovirus 15]|Viruses|
+|GNO_TRINITY_DN412_c0_g1_i5|3538|YP_009507948.1|1108|63.8|1107|0|RNA-dependent RNA polymerase [Verticillium dahliae chrysovirus 1]|Viruses|
+|GNO_TRINITY_DN509_c0_g1_i9|2875|BBJ21309.1|824|71.2|823|0|cysteine protease [Cryphonectria nitschkei chrysovirus 1]|Viruses|
+|GNO_TRINITY_DN530_c0_g1_i8|3303|BBJ21310.1|758|43.9|765|3.3E-176|replicase associated protein [Cryphonectria nitschkei chrysovirus 1]|Viruses|
+|GNO_TRINITY_DN535_c0_g1_i5|3639|ACT79254.1|906|70.4|538|2.1E-216|capsid protein [Cryphonectria nitschkei chrysovirus 1]|Viruses|
+]
+
+---
+
+## Final list with viral contigs
+
+.table10[
+|qseqid|qlen|sseqid|slen|pident|length|evalue|DESC|TAXO|
+|---|---|---|---|---|---|---|---|---|
+|CP1_TRINITY_DN1183_c1_g2_i2|2575|KAF3761644.1|647|100|647|0|acetyl-CoA synthetase-like protein [Cryphonectria parasitica EP155]|Fungi|
+|CP1_TRINITY_DN1274_c0_g1_i5|3017|KAF3761985.1|699|100|672|0|acetyl-CoA synthetase-like protein [Cryphonectria parasitica EP155]|Fungi|
+|GNO_TRINITY_DN6423_c0_g2_i1|3795|ROW18252.1|994|89.3|1002|0|hypothetical protein VPNG_00226 [Cytospora leucostoma]|Fungi|
+|CP1_TRINITY_DN1611_c0_g1_i1|3536|ROV98340.1|821|96.7|821|0|hypothetical protein VMCG_07088 [Valsa malicola]|Fungi|
+|**CP1_TRINITY_DN37_c0_g2_i1**|**12722**|**AUZ41744.1**|**3164**|**99.4**|**3164**|**0**|**ORF B [Cryphonectria hypovirus 1]**|**Viruses**|
+|**CP2_TRINITY_DN16_c0_g1_i6**|**12735**|**AUZ41744.1**|**3164**|**99.4**|**3164**|**0**|**ORF B [Cryphonectria hypovirus 1]**|**Viruses**|
+|GNO_TRINITY_DN159_c0_g1_i4|2417|AHF48631.1|703|67.1|695|6E-268|RNA-dependent RNA polymerase [Sclerotinia sclerotiorum mitovirus 15]|Viruses|
+|GNO_TRINITY_DN412_c0_g1_i5|3538|YP_009507948.1|1108|63.8|1107|0|RNA-dependent RNA polymerase [Verticillium dahliae chrysovirus 1]|Viruses|
+|GNO_TRINITY_DN509_c0_g1_i9|2875|BBJ21309.1|824|71.2|823|0|cysteine protease [Cryphonectria nitschkei chrysovirus 1]|Viruses|
+|GNO_TRINITY_DN530_c0_g1_i8|3303|BBJ21310.1|758|43.9|765|3.3E-176|replicase associated protein [Cryphonectria nitschkei chrysovirus 1]|Viruses|
+|GNO_TRINITY_DN535_c0_g1_i5|3639|ACT79254.1|906|70.4|538|2.1E-216|capsid protein [Cryphonectria nitschkei chrysovirus 1]|Viruses|
+]
+
+.par15[
+1. Viral contigs that present an **identity higher 90%** with viruses already present on NCBI are viruses present in the analysed sample, but already discovered
+
+]
+
+---
+
+## Final list with viral contigs
+
+.table10[
+|qseqid|qlen|sseqid|slen|pident|length|evalue|DESC|TAXO|
+|---|---|---|---|---|---|---|---|---|
+|CP1_TRINITY_DN1183_c1_g2_i2|2575|KAF3761644.1|647|100|647|0|acetyl-CoA synthetase-like protein [Cryphonectria parasitica EP155]|Fungi|
+|CP1_TRINITY_DN1274_c0_g1_i5|3017|KAF3761985.1|699|100|672|0|acetyl-CoA synthetase-like protein [Cryphonectria parasitica EP155]|Fungi|
+|GNO_TRINITY_DN6423_c0_g2_i1|3795|ROW18252.1|994|89.3|1002|0|hypothetical protein VPNG_00226 [Cytospora leucostoma]|Fungi|
+|CP1_TRINITY_DN1611_c0_g1_i1|3536|ROV98340.1|821|96.7|821|0|hypothetical protein VMCG_07088 [Valsa malicola]|Fungi|
+|CP1_TRINITY_DN37_c0_g2_i1|12722|AUZ41744.1|3164|99.4|3164|0|ORF B [Cryphonectria hypovirus 1]|Viruses|
+|CP2_TRINITY_DN16_c0_g1_i6|12735|AUZ41744.1|3164|99.4|3164|0|ORF B [Cryphonectria hypovirus 1]|Viruses|
+|**GNO_TRINITY_DN159_c0_g1_i4**|**2417**|**AHF48631.1**|**703**|**67.1**|**695**|**6E-268**|**RNA-dependent RNA polymerase [Sclerotinia sclerotiorum mitovirus 15]**|**Viruses**|
+|**GNO_TRINITY_DN412_c0_g1_i5**|**3538**|**YP_009507948.1**|**1108**|**63.8**|**1107**|**0**|**RNA-dependent RNA polymerase [Verticillium dahliae chrysovirus 1]**|**Viruses**|
+|**GNO_TRINITY_DN509_c0_g1_i9**|**2875**|**BBJ21309.1**|**824**|**71.2**|**823**|**0**|**cysteine protease [Cryphonectria nitschkei chrysovirus 1]**|**Viruses**|
+|**GNO_TRINITY_DN530_c0_g1_i8**|**3303**|**BBJ21310.1**|**758**|**43.9**|**765**|**3.3E-176**|**replicase associated protein [Cryphonectria nitschkei chrysovirus 1]**|**Viruses**|
+|**GNO_TRINITY_DN535_c0_g1_i5**|**3639**|**ACT79254.1**|**906**|**70.4**|**538**|**2.1E-216**|**capsid protein [Cryphonectria nitschkei chrysovirus 1]**|**Viruses**|
+]
+
+.par15[
+1. Viral contigs that present an **identity higher 90%** with viruses already present on NCBI are viruses present in the analysed sample, but already discovered
+
+1. Viral contigs that present an **identity lower 90%** with viruses already present on NCBI are viruses are new discovered viruses
+
+.center.red.code60[
+From now, only the new discovered viruses will be taken into account
+]
+]
+
+---
+
+```{r echo=FALSE, out.width="500px"}
+knitr::include_graphics("images/questions.png")
+```
+
+---
+
+class: middle, center, clear
+
+# .black[Uni-virus list definition] 
+
+----
+
+---
+
+class: clear, middle, center
+
+.f70[.f900[R]]
+
+.m0tp[
+.f15[https://cran.r-project.org/]
+]
+
+----
+
+---
+
+layout: true
+
+# Univirus .rightH1[
+`r fontawesome::fa("fingerprint", fill = "white")`
+]
+
+---
+
+

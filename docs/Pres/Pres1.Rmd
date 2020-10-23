@@ -1088,7 +1088,6 @@ layout: true
 
     
 .pull-right[
-<br>
 ```{r echo=FALSE, out.width="500px"}
 knitr::include_graphics("images/t1.png")
 ```
