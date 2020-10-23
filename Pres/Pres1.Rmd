@@ -1336,3 +1336,137 @@ The key features are:
     
 - Various output formats, including BLAST pairwise, tabular and XML, as well as taxonomic classification.
 ]
+
+---
+
+## Diamond blast
+
+.font70[Prepare viral database]
+
+```
+> diamond makedb --in viralDB.faa -d ViralDB
+```
+
+.font70[Make blast]
+
+```
+# Alignment
+> diamond blastx -p30 -d viralDB -q trinity_out_dir.Trinity.fasta \
+  -o CP1_DiamondBlast.blast -f 0 -k 2 --unal 0 --very-sensitive
+```
+
+```
+# Tabular
+> diamond blastx -p30 -d viralDB -q trinity_out_dir.Trinity.fasta \
+  -o CP1_DiamondBlast.tab -f 6 qseqid qlen sseqid slen pident length \
+  mismatch gapopen qstart qend sstart send evalue bitscore -k 2 --unal 0 --very-sensitive
+```
+
+---
+
+## Alignment output
+
+.code40[
+```
+Query= TRINITY_DN1830_c0_g1_i42 len=4362 path=[0:0-172 2:173-354 3:355-355 4:356-646 6:647-936 8:937-1831 10:1832-1840 12:1841-1921 13:1922-2257 15:2258-2366 16:2367-2600 17:2601-2964 18:2965-3936 19:3937-4361]
+
+Length=4362
+
+>APY28336.1 |dUTPAse-like protein [pasivirus A3]
+Length=140
+
+ Score = 72.8 bits (177),  Expect = 2.4e-10
+  Identities = 40/118 (33%), Positives = 59/118 (50%), Gaps = 0/118 (0%)
+   Frame = -2
+
+Query  4154  DTMAAPPLMIKRLSEKARLPTRGSAFAAGYDIYASKPTVIPARGKALVDTDISMACPPGT 3975
+             D    P L  +RLS  A LP++    +  YD+Y +  T IP   + ++ TDI +  P   
+             Sbjct     7  DERPVPRLGFERLSPAALLPSQNPKRSMTYDLYCAYSTTIPPHDRRVLLTDIRVYVPESC 66
+
+Query  3974  YGRIAPRSGLASKHFIDTGAGVIDADYRGQVKILLFNHSEADFSVSEGDRVAQLVLER 3801
+             YG I PR     K F+D G G ++ + R  + I  FN S++ FS   GD +  + L R
+             Sbjct    67  YGVIEPRCVFDPKFFLDAGKGCVEHNCRDNISITFFNLSDSPFSFRRGDMLCSVTLFR 124
+```
+]
+
+## Tabular output
+
+.code40[
+```
+*TRINITY_DN1830_c0_g1_i42        4362    APY28336.1      140     33.9    118     78      0       4154    3801    7       124      2.4e-10 72.8
+TRINITY_DN1830_c0_g1_i7 4253    APY28336.1      140     33.9    118     78      0       4045    3692    7       124     2.3e-10  72.8
+TRINITY_DN1853_c0_g2_i6 5154    QJC19294.1      4920    22.2    451     272     16      4236    2908    3107    3486    1.3e-07  63.9
+TRINITY_DN1853_c0_g2_i6 5154    ATB20098.1      4920    22.0    451     273     16      4236    2908    3107    3486    1.3e-07  63.9
+TRINITY_DN1853_c0_g2_i2 5332    QJC19294.1      4920    22.2    451     272     16      4320    2992    3107    3486    1.3e-07  63.9
+TRINITY_DN1853_c0_g2_i2 5332    ATB20098.1      4920    22.0    451     273     16      4320    2992    3107    3486    1.3e-07  63.9
+TRINITY_DN1853_c0_g2_i3 5334    QJC19294.1      4920    22.2    451     272     16      4416    3088    3107    3486    1.3e-07  63.9
+TRINITY_DN1853_c0_g2_i3 5334    ATB20098.1      4920    22.0    451     273     16      4416    3088    3107    3486    1.3e-07  63.9
+TRINITY_DN1853_c0_g2_i7 5238    QJC19294.1      4920    22.2    451     272     16      4320    2992    3107    3486    1.3e-07  63.9
+TRINITY_DN1853_c0_g2_i7 5238    ATB20098.1      4920    22.0    451     273     16      4320    2992    3107    3486    1.3e-07  63.9
+```
+]
+
+---
+
+## Tabular makeup
+
+<br>
+.table10[
+|Pool|qseqid|qlen|sseqid|slen|pident|length|evalue|Org|Description|ID|
+|---|---|---|---|---|---|---|---|---|---|---|
+|CP1|TRINITY_DN1010_c1_g1_i12|2473|QDH89109.1|224|76.1|209|2.4e-92|Picornavirales sp.|"hypothetical protein H1BulkLitter557_000002 partial"|CP1_TRINITY_DN1010_c1_g1_i12|
+|CP1|TRINITY_DN1048_c0_g1_i37|6656|YP_874188.1|599|23.6|440|2e-13|Raspberry leaf mottle virus|HSP 70h|CP1_TRINITY_DN1048_c0_g1_i37|
+|CP1|TRINITY_DN105_c0_g1_i39|1922|QJE50384.1|452|100|35|3.6e-11|Mammalian orthoreovirus 5|Sigma 2|CP1_TRINITY_DN105_c0_g1_i39|
+|CP1|TRINITY_DN1079_c1_g2_i2|4896|QDH91349.1|325|45.9|279|3.4e-58|Partitiviridae sp.|"hypothetical protein H3Bulk427771_000001 partial"|CP1_TRINITY_DN1079_c1_g2_i2|
+|CP1|TRINITY_DN116_c2_g1_i1|7773|QLL27747.1|1466|22.8|180|1.3e-6|Leveillula taurica associated alphamesonivirus 1|"putative helicase partial"|CP1_TRINITY_DN116_c2_g1_i1|
+|CP1|TRINITY_DN1179_c0_g1_i4|4529|QDH91227.1|467|24.5|220|2.1e-6|Riboviria sp.|hypothetical protein H4RhizoLitter191464_000002|CP1_TRINITY_DN1179_c0_g1_i4|
+|CP1|TRINITY_DN1183_c0_g1_i8|6656|QDH91349.1|325|40.9|237|1.1e-40|Partitiviridae sp.|"hypothetical protein H3Bulk427771_000001 partial"|CP1_TRINITY_DN1183_c0_g1_i8|
+|CP1|TRINITY_DN1183_c1_g2_i2|2575|AHC94771.1|550|30|423|4.5e-33|Human orthopneumovirus|firefly luciferase|CP1_TRINITY_DN1183_c1_g2_i2|
+]
+
+---
+## Manual inspection of the alignment results
+
+
+## Naive tabular approach
+
+----
+
+<br>
+
+.content-box-blue[
+In both cases the output is a fasta file containing the selected contigs <br>**possible viral contigs**
+]
+
+---
+
+## Diamond blast
+
+.font70[Prepare NCBInr database]
+
+```
+> diamond makedb --in NCBInr.faa -d NCBInr
+```
+
+.font70[Make blast]
+
+```
+# Alignment
+> diamond blastx -p30 -d NCBInr -q CP1_viralDB_selection.fasta \
+  -o CP1_viralDB_selection.blast -f 0 -k 2 --unal 0 --very-sensitive
+```
+
+```
+# Tabular
+> diamond blastx -p30 -d viralDB -q CP1_viralDB_selection.fasta \
+  -o CP1_viralDB_selection.tab -f 6 qseqid qlen sseqid slen pident length \
+  mismatch gapopen qstart qend sstart send evalue bitscore -k 2 --unal 0 --very-sensitive
+```
+
+---
+
+.content-box-red[
+Blast against NCBInr allows to identify the contigs that are not viral
+<br>
+They can be fragments integrated in the host genome
+]
