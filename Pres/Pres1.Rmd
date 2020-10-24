@@ -92,16 +92,119 @@ class: clear
 .pull-right[
 .par26[
 
-- General recommandations<br><br>
+- General recommandetions<br><br>
   - Software version
   - Avoid manual operation
-  - Master script
   - Backup
   - Version control
   - Working directory  
 
 ]
 ]
+
+---
+
+class: middle, center, clear
+
+# .black[General recommendations] 
+
+----
+
+---
+class: clear, middle, center
+
+
+.f70[.f900[GOAL<br>**Reproducible analysis**]]
+
+----
+
+---
+
+layout: true
+
+# General recommandetions .rightH1[
+`r fontawesome::fa("code", fill = "white")`
+]
+
+---
+
+## Software version
+
+<br>
+.content-box-red[
+**ALWAYS** store the software version you use!
+<br>
+Store the DB version and each package or plugon version
+]
+
+---
+
+## Avoid manual operation
+<br>
+.content-box-red[
+Manual operation are error prone and very difficult to replicate<br>
+<br>
+Use a programming language to do your analysis
+]
+
+<br>
+<br>
+.right.font50[Not everyone should be able to program! **Bioinformaticians** are among us for this purpuse]
+
+---
+
+## Backup
+
+<br>
+.content-box-red[
+**Always** back up you raw data    
+**Always** back up you scripts
+<br>
+Intermidiate files can be regenerated
+]
+
+---
+
+## Version control
+
+.pull-left[
+<br>
+.content-box-red[
+**Version control** is a fondamental to keep track of changes
+]
+
+.par10[
+Version control is a class of systems responsible for managing changes to computer programs, documents, large web sites, or other collections of information]
+]
+
+    
+.pull-right[
+.m0[
+```{r echo=FALSE, out.width="350px"}
+knitr::include_graphics("images/vercon1.png")
+```
+]]
+
+---
+
+## Working directory
+
+.content-box-red[
+**Organize you projects**
+]
+
+```{r echo=FALSE, out.width="900px"}
+knitr::include_graphics("images/wd1.png")
+```
+
+---
+
+layout: false
+class: middle, center, clear
+
+# .black[Sequencing by synthesis] 
+
+----
 
 ---
 
@@ -2026,7 +2129,7 @@ $DBNAME
 
 ## Kraken2
 
-.pull-left[
+.pullL[
 .table10[
 |PCF|NFC|NFA|RANK|taxID|Name|
 |---|---|---|---|---|---|
@@ -2049,7 +2152,7 @@ $DBNAME
 
 ]]
 
-.pull-right[
+.pullM[
 .table10[
 |PCF|NFC|NFA|RANK|taxID|Name|
 |---|---|---|---|---|---|
@@ -2072,18 +2175,74 @@ $DBNAME
 
 ]]
 
+.pullR[
+.m0[
+.par15[
+- **PCF**: Percentage of fragments covered by the clade rooted at this taxon
+- **NFC**: Number of fragments covered by the clade rooted at this taxon
+- **NFA**: Number of fragments assigned directly to this taxon
+ - **Rank**: A rank code, indicating 
+   - (**U**)nclassified
+   - (**R**)oot
+   - (**D**)omain
+   - (**K**)ingdom
+   - (**P**)hylum
+   - (**C**)lass 
+   - (**O**)rder
+   - (**F**)amily
+   - (**G**)enus
+   - (**S**)pecies. 
+   - .font90[NB: Taxa that are not at any of these 10 ranks have a rank code that is formed by using the rank code of the closest ancestor rank with a number indicating the distance from that rank]
+- **taxID**: NCBI taxonomic ID number
+- **Name**: Indented scientific name
+
+]]]
+
+---
+
+## Pavian
+
+.pull-left[
+.par23[
+- Pavian is a interactive browser application for analyzing and visualization metagenomics classification results
+
+- With Pavian, researchers can analyze, display and transform results from the Kraken classifier using interactive tables, heatmaps and flow diagrams
+
+- Pavian is implemented in the R language and based on the Shiny framework. It can be hosted on Windows, Mac OS X and Linux systems
+
+- It is freely available on Github under a GPL-3 license
+]
+]
+
+    
 .pull-right[
-.table10[
-|PCF|NFC|NFA|RANK|taxID|Name|
-|---|---|---|---|---|---|
-
-
-    Percentage of fragments covered by the clade rooted at this taxon
-    Number of fragments covered by the clade rooted at this taxon
-    Number of fragments assigned directly to this taxon
-    A rank code, indicating (U)nclassified, (R)oot, (D)omain, (K)ingdom, (P)hylum, (C)lass, (O)rder, (F)amily, (G)enus, or (S)pecies. Taxa that are not at any of these 10 ranks have a rank code that is formed by using the rank code of the closest ancestor rank with a number indicating the distance from that rank. E.g., "G2" is a rank code indicating a taxon is between genus and species and the grandparent taxon is at the genus rank.
-    NCBI taxonomic ID number
-    Indented scientific name
-
-
+.m0[
+```{r echo=FALSE, out.width="300px"}
+knitr::include_graphics("images/pav1.png")
+knitr::include_graphics("images/pav2.png")
+```
 ]]
+
+---
+
+## Pavian
+
+.pull-left[
+.par23[
+- Pavian is a interactive browser application for analyzing and visualization metagenomics classification results
+
+- With Pavian, researchers can analyze, display and transform results from the Kraken classifier using interactive tables, heatmaps and flow diagrams
+
+- Pavian is implemented in the R language and based on the Shiny framework. It can be hosted on Windows, Mac OS X and Linux systems
+
+- It is freely available on Github under a GPL-3 license
+]
+]
+
+    
+.pull-right[
+<br>
+.center[.f120[.f700[**DEMO**]]]
+]
+
+

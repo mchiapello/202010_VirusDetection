@@ -210,3 +210,19 @@
     float: left;
     margin: 0px 20px !important;
 }
+
+  .pullL {
+    float: left;
+    width: 33%;
+  }
+
+  .pullM {
+    float: left;
+    width: 33%;
+  }
+
+  .pullR {
+    float: right;
+    width: 33%;
+  }
+
