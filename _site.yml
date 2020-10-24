@@ -10,7 +10,7 @@ navbar:
   search: true
   right:
     - text: "Citations"
-      href: citations.html
+      href: Citations.html
     - text: "Contacts"
       href: contacts.html
     - icon: fab fa-github
