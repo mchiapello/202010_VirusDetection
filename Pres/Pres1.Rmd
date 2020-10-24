@@ -104,6 +104,82 @@ class: clear
 
 ---
 
+class: clear
+
+.f40[**Agenda**]
+
+.pull-left[
+.par26.opacity10[
+
+- Pipeline
+  - Quality check
+  - Data cleaning
+  - Assembly
+  - Blast against viralDB
+  - Manual selection I
+  - Blast against NCBInr
+  - Manual selection II
+  - Uni-virus list
+  - Mapping
+  - Taxonomy classification
+
+- Orfans identification
+]
+]
+
+.pull-right[
+.par26[
+
+- General recommandetions<br><br>
+  - Software version
+  - Avoid manual operation
+  - Backup
+  - Version control
+  - Working directory  
+
+]
+]
+
+---
+
+class: clear
+
+.f40[**Agenda**]
+
+.pull-left[
+.par26[
+
+- Pipeline
+  - Quality check
+  - Data cleaning
+  - Assembly
+  - Blast against viralDB
+  - Manual selection I
+  - Blast against NCBInr
+  - Manual selection II
+  - Uni-virus list
+  - Mapping
+  - Taxonomy classification
+
+- Orfans identification
+]
+]
+
+.pull-right[
+.par26[
+
+- General recommandetions<br><br>
+  - ~~Software version~~
+  - <del>Avoid manual operation        </del>
+  - <del>Backup</del>
+  - <del>Version control</del>
+  - <del>Working directory</del>  
+
+]
+]
+
+---
+
 class: middle, center, clear
 
 # .black[General recommendations] 
@@ -2246,3 +2322,23 @@ knitr::include_graphics("images/pav2.png")
 ]
 
 
+---
+
+
+class: middle, center, clear
+
+# .black[Orfans identification] 
+
+----
+
+---
+
+layout: true
+
+# Orfans identification .rightH1[
+`r fontawesome::fa("crosshairs", fill = "white")`
+]
+
+---
+
+`r fontawesome::fa("head-side-mask", fill = "black")`
