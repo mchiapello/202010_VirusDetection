@@ -210,7 +210,7 @@ layout: true
 .content-box-red[
 **ALWAYS** store the software version you use!
 <br>
-Store the DB version and each package or plugon version
+Store the DB version and each package or plugin version
 ]
 
 ---
@@ -246,7 +246,7 @@ Intermidiate files can be regenerated
 .pull-left[
 <br>
 .content-box-red[
-**Version control** is a fondamental to keep track of changes
+**Version control** is a fundamental to keep track of changes
 ]
 
 .par10[
@@ -2341,4 +2341,49 @@ layout: true
 
 ---
 
-`r fontawesome::fa("head-side-mask", fill = "black")`
+## Step 1 - Blast search
+
+Assembled contigs from each library were submitted to a DIAMOND search of the NCBI non redundant whole database 
+
+```
+> diamond blastx -p20 -d nr -q mysequences.fasta -f 6 -k 1 -e 0.00001 --very-sensitive
+```
+
+## Step 2 - Filter out hits
+
+All contigs with a homologue were discarded, whereas the remaining contigs that were over 1 kbp in length and encoded a protein of at least 150 amino acids (~15 kDa) were kept
+
+---
+
+## Step 3 - Mapping
+
+Reads were mapped to those contigs considering their orientation, i.e. whether they mapped in sense or antisense orientation
+
+## Step 4 - Selection 
+
+All the contigs that showed only positive or only negative reads were discarded, since a typical feature of replicating viruses is the presence of a minus and plus sense genomic template for replication
+
+.center.red[
+**Final list of ORFANS**
+]
+
+---
+
+
+```{r echo=FALSE, out.width="500px"}
+knitr::include_graphics("images/questions.png")
+```
+---
+
+layout: false
+class: clear, middle, center
+
+.font300[`r fontawesome::fa("file-code", fill = "black")`] 
+
+.content-box-red[
+All the **scripts** and **pipeline details** are **freely available** <br>under GNU General Public License v3.0
+]
+<br>
+```{r echo=FALSE, out.width="700px"}
+knitr::include_graphics("images/license.png")
+```
