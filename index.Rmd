@@ -22,7 +22,6 @@ knitr::opts_chunk$set(echo = FALSE)
 |---|---|
 |9:00 - 9:15 | General introduction and presentations|
 |9:15 - 9:30 | [Course goal and expectations](Pres/Pres0.html)
-|9:30 - 9:45 | Expected output
-|9:45 - 11:00| [Pipeline bird's eye view](Pres/Pres1.html)
+|9:30 - 11:00| [Pipeline bird's eye view](Pres/Pres1.html)
 |11:00 - 11:15| Break
-|11:15 - 13 | Q&A
+|11:15 - 12 | Q&A
