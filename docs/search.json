@@ -1,0 +1,42 @@
+{
+  "articles": [
+    {
+      "path": "Citations.html",
+      "title": "Citations",
+      "author": [],
+      "contents": "\nFigures of presentation “Course goal and expectations” are from Chiapello et al. (2020).\n\n\n\nChiapello, M, J Rodríguez-Romero, M A Ayllón, and M Turina. 2020. “Analysis of the virome associated to grapevine downy mildew lesions reveals new mycovirus lineages.” Virus Evolution, August. https://doi.org/10.1093/ve/veaa058.\n\n\n\n\n",
+      "last_modified": "2023-03-26T07:36:20+02:00"
+    },
+    {
+      "path": "Intro.html",
+      "title": "General introduction and presentations",
+      "author": [],
+      "contents": "\nRound table\nGeneral presentations\n\n\n\n\n",
+      "last_modified": "2023-03-26T07:36:20+02:00"
+    },
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2023-03-26T07:36:22+02:00"
+    },
+    {
+      "path": "contacts.html",
+      "title": "Contacts",
+      "author": [],
+      "contents": "\nPerson\nemail\nskype\nMarco Chiapello\nmarco.chiapello (at) ipsp.cnr.it\nmarpello1980\nMassimo Turina\nmassimo.turina (at) ipsp.cnr.it\nturinalab\n\n\n\n",
+      "last_modified": "2023-03-26T07:36:23+02:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Bioinformatics analysis of viromes",
+      "description": "Short course on virus identification from fungal samples!\n",
+      "author": [],
+      "contents": "\nSchedule\nHour\nGoal\n9:00 - 9:15\nGeneral introduction and presentations\n9:15 - 9:30\nCourse goal and expectations\n9:30 - 11:00\nPipeline bird’s eye view\n11:00 - 11:15\nBreak\n11:15 - 12\nQ&A\n\n\n\n",
+      "last_modified": "2023-03-26T07:36:24+02:00"
+    }
+  ],
+  "collections": []
+}
