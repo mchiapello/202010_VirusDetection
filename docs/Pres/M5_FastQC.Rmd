@@ -528,4 +528,4 @@ knitr::include_graphics("images/Fqc13.png")
 knitr::include_graphics("images/questions.png")
 ```
 
-[back](https://mchiapello.github.io/202304_REVELO_Torvergata/materials/M5_software_code.html)
+[back](https://mchiapello.github.io/202304_REVELO_Torvergata/materials/M5_software_code.html#/diversi-software-1)
